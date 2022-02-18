@@ -33,25 +33,27 @@ namespace C968_PA_MPlatt
             this.label_AddPart = new System.Windows.Forms.Label();
             this.radioButton_Inhouse = new System.Windows.Forms.RadioButton();
             this.radioButton_Outsourced = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_PartID = new System.Windows.Forms.TextBox();
             this.label_PartID = new System.Windows.Forms.Label();
             this.label_PartName = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_PartName = new System.Windows.Forms.TextBox();
             this.label_Inventory = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_PartQty = new System.Windows.Forms.TextBox();
             this.label_PartPrice = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_PartPrice = new System.Windows.Forms.TextBox();
             this.label_PartMin = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox_PartMin = new System.Windows.Forms.TextBox();
+            this.label_MachineID_CoName = new System.Windows.Forms.Label();
+            this.textBox_PartMachID = new System.Windows.Forms.TextBox();
             this.label_PartMax = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox_PartMax = new System.Windows.Forms.TextBox();
+            this.btn_addPartSave = new System.Windows.Forms.Button();
+            this.btn_addPartCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 158);
+            this.textBox1.Location = new System.Drawing.Point(180, 156);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(0, 20);
             this.textBox1.TabIndex = 0;
@@ -70,7 +72,7 @@ namespace C968_PA_MPlatt
             // 
             this.radioButton_Inhouse.AutoSize = true;
             this.radioButton_Inhouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radioButton_Inhouse.Location = new System.Drawing.Point(133, 53);
+            this.radioButton_Inhouse.Location = new System.Drawing.Point(120, 55);
             this.radioButton_Inhouse.Name = "radioButton_Inhouse";
             this.radioButton_Inhouse.Size = new System.Drawing.Size(93, 24);
             this.radioButton_Inhouse.TabIndex = 2;
@@ -82,7 +84,7 @@ namespace C968_PA_MPlatt
             // 
             this.radioButton_Outsourced.AutoSize = true;
             this.radioButton_Outsourced.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radioButton_Outsourced.Location = new System.Drawing.Point(319, 53);
+            this.radioButton_Outsourced.Location = new System.Drawing.Point(306, 55);
             this.radioButton_Outsourced.Name = "radioButton_Outsourced";
             this.radioButton_Outsourced.Size = new System.Drawing.Size(110, 24);
             this.radioButton_Outsourced.TabIndex = 2;
@@ -90,20 +92,21 @@ namespace C968_PA_MPlatt
             this.radioButton_Outsourced.Text = "Outsourced";
             this.radioButton_Outsourced.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // textBox_PartID
             // 
-            this.textBox2.Location = new System.Drawing.Point(247, 111);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 28);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartID.Location = new System.Drawing.Point(234, 113);
+            this.textBox_PartID.MaxLength = 3;
+            this.textBox_PartID.Name = "textBox_PartID";
+            this.textBox_PartID.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartID.TabIndex = 3;
+            this.textBox_PartID.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartID_KeyPress);
             // 
             // label_PartID
             // 
             this.label_PartID.AutoSize = true;
             this.label_PartID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_PartID.Location = new System.Drawing.Point(122, 119);
+            this.label_PartID.Location = new System.Drawing.Point(109, 117);
             this.label_PartID.Name = "label_PartID";
             this.label_PartID.Size = new System.Drawing.Size(59, 20);
             this.label_PartID.TabIndex = 1;
@@ -114,132 +117,158 @@ namespace C968_PA_MPlatt
             // 
             this.label_PartName.AutoSize = true;
             this.label_PartName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_PartName.Location = new System.Drawing.Point(122, 166);
+            this.label_PartName.Location = new System.Drawing.Point(109, 164);
             this.label_PartName.Name = "label_PartName";
             this.label_PartName.Size = new System.Drawing.Size(51, 20);
             this.label_PartName.TabIndex = 1;
             this.label_PartName.Text = "Name";
             // 
-            // textBox3
+            // textBox_PartName
             // 
-            this.textBox3.Location = new System.Drawing.Point(247, 158);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(159, 28);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartName.Location = new System.Drawing.Point(234, 160);
+            this.textBox_PartName.MaxLength = 20;
+            this.textBox_PartName.Name = "textBox_PartName";
+            this.textBox_PartName.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartName.TabIndex = 3;
+            this.textBox_PartName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartName_KeyPress);
             // 
             // label_Inventory
             // 
             this.label_Inventory.AutoSize = true;
             this.label_Inventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_Inventory.Location = new System.Drawing.Point(122, 217);
+            this.label_Inventory.Location = new System.Drawing.Point(109, 215);
             this.label_Inventory.Name = "label_Inventory";
             this.label_Inventory.Size = new System.Drawing.Size(74, 20);
             this.label_Inventory.TabIndex = 1;
             this.label_Inventory.Text = "Inventory";
             // 
-            // textBox4
+            // textBox_PartQty
             // 
-            this.textBox4.Location = new System.Drawing.Point(247, 209);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(159, 28);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartQty.Location = new System.Drawing.Point(234, 211);
+            this.textBox_PartQty.MaxLength = 10;
+            this.textBox_PartQty.Name = "textBox_PartQty";
+            this.textBox_PartQty.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartQty.TabIndex = 3;
+            this.textBox_PartQty.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartQty_KeyPress);
             // 
             // label_PartPrice
             // 
             this.label_PartPrice.AutoSize = true;
             this.label_PartPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_PartPrice.Location = new System.Drawing.Point(122, 270);
+            this.label_PartPrice.Location = new System.Drawing.Point(109, 268);
             this.label_PartPrice.Name = "label_PartPrice";
             this.label_PartPrice.Size = new System.Drawing.Size(44, 20);
             this.label_PartPrice.TabIndex = 1;
             this.label_PartPrice.Text = "Price";
             // 
-            // textBox5
+            // textBox_PartPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(247, 262);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 28);
-            this.textBox5.TabIndex = 3;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartPrice.Location = new System.Drawing.Point(234, 264);
+            this.textBox_PartPrice.MaxLength = 10;
+            this.textBox_PartPrice.Name = "textBox_PartPrice";
+            this.textBox_PartPrice.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartPrice.TabIndex = 3;
+            this.textBox_PartPrice.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartPrice_KeyPress);
             // 
             // label_PartMin
             // 
             this.label_PartMin.AutoSize = true;
             this.label_PartMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_PartMin.Location = new System.Drawing.Point(122, 324);
+            this.label_PartMin.Location = new System.Drawing.Point(109, 322);
             this.label_PartMin.Name = "label_PartMin";
             this.label_PartMin.Size = new System.Drawing.Size(34, 20);
             this.label_PartMin.TabIndex = 1;
             this.label_PartMin.Text = "Min";
             // 
-            // textBox6
+            // textBox_PartMin
             // 
-            this.textBox6.Location = new System.Drawing.Point(247, 316);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(65, 28);
-            this.textBox6.TabIndex = 3;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMin.Location = new System.Drawing.Point(234, 318);
+            this.textBox_PartMin.MaxLength = 10;
+            this.textBox_PartMin.Name = "textBox_PartMin";
+            this.textBox_PartMin.Size = new System.Drawing.Size(65, 20);
+            this.textBox_PartMin.TabIndex = 3;
+            this.textBox_PartMin.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMin_KeyPress);
             // 
-            // label6
+            // label_MachineID_CoName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(122, 387);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Add Part";
+            this.label_MachineID_CoName.AutoSize = true;
+            this.label_MachineID_CoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label_MachineID_CoName.Location = new System.Drawing.Point(109, 385);
+            this.label_MachineID_CoName.Name = "label_MachineID_CoName";
+            this.label_MachineID_CoName.Size = new System.Drawing.Size(90, 20);
+            this.label_MachineID_CoName.TabIndex = 1;
+            this.label_MachineID_CoName.Text = "Machine ID";
             // 
-            // textBox7
+            // textBox_PartMachID
             // 
-            this.textBox7.Location = new System.Drawing.Point(247, 379);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(159, 28);
-            this.textBox7.TabIndex = 3;
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMachID.Location = new System.Drawing.Point(234, 381);
+            this.textBox_PartMachID.MaxLength = 10;
+            this.textBox_PartMachID.Name = "textBox_PartMachID";
+            this.textBox_PartMachID.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartMachID.TabIndex = 3;
+            this.textBox_PartMachID.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label_PartMax
             // 
             this.label_PartMax.AutoSize = true;
             this.label_PartMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label_PartMax.Location = new System.Drawing.Point(344, 324);
+            this.label_PartMax.Location = new System.Drawing.Point(331, 321);
             this.label_PartMax.Name = "label_PartMax";
             this.label_PartMax.Size = new System.Drawing.Size(38, 20);
             this.label_PartMax.TabIndex = 1;
             this.label_PartMax.Text = "Max";
             // 
-            // textBox8
+            // textBox_PartMax
             // 
-            this.textBox8.Location = new System.Drawing.Point(395, 316);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(65, 28);
-            this.textBox8.TabIndex = 3;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMax.Location = new System.Drawing.Point(382, 318);
+            this.textBox_PartMax.MaxLength = 10;
+            this.textBox_PartMax.Name = "textBox_PartMax";
+            this.textBox_PartMax.Size = new System.Drawing.Size(65, 20);
+            this.textBox_PartMax.TabIndex = 3;
+            this.textBox_PartMax.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMax_KeyPress);
+            // 
+            // btn_addPartSave
+            // 
+            this.btn_addPartSave.Location = new System.Drawing.Point(335, 447);
+            this.btn_addPartSave.Name = "btn_addPartSave";
+            this.btn_addPartSave.Size = new System.Drawing.Size(75, 39);
+            this.btn_addPartSave.TabIndex = 4;
+            this.btn_addPartSave.Text = "Save";
+            this.btn_addPartSave.UseVisualStyleBackColor = true;
+            this.btn_addPartSave.Click += new System.EventHandler(this.savePart);
+            // 
+            // btn_addPartCancel
+            // 
+            this.btn_addPartCancel.Location = new System.Drawing.Point(426, 447);
+            this.btn_addPartCancel.Name = "btn_addPartCancel";
+            this.btn_addPartCancel.Size = new System.Drawing.Size(75, 39);
+            this.btn_addPartCancel.TabIndex = 4;
+            this.btn_addPartCancel.Text = "Cancel";
+            this.btn_addPartCancel.UseVisualStyleBackColor = true;
             // 
             // Form_AddPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 461);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
+            this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.btn_addPartCancel);
+            this.Controls.Add(this.btn_addPartSave);
+            this.Controls.Add(this.textBox_PartMachID);
+            this.Controls.Add(this.textBox_PartMax);
+            this.Controls.Add(this.textBox_PartMin);
+            this.Controls.Add(this.textBox_PartPrice);
+            this.Controls.Add(this.label_MachineID_CoName);
+            this.Controls.Add(this.textBox_PartQty);
             this.Controls.Add(this.label_PartMax);
             this.Controls.Add(this.label_PartMin);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_PartName);
             this.Controls.Add(this.label_PartPrice);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_PartID);
             this.Controls.Add(this.label_Inventory);
             this.Controls.Add(this.radioButton_Outsourced);
             this.Controls.Add(this.label_PartName);
@@ -260,19 +289,21 @@ namespace C968_PA_MPlatt
         private System.Windows.Forms.Label label_AddPart;
         private System.Windows.Forms.RadioButton radioButton_Inhouse;
         private System.Windows.Forms.RadioButton radioButton_Outsourced;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_PartID;
         private System.Windows.Forms.Label label_PartID;
         private System.Windows.Forms.Label label_PartName;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_PartName;
         private System.Windows.Forms.Label label_Inventory;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_PartQty;
         private System.Windows.Forms.Label label_PartPrice;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_PartPrice;
         private System.Windows.Forms.Label label_PartMin;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox_PartMin;
+        private System.Windows.Forms.Label label_MachineID_CoName;
+        private System.Windows.Forms.TextBox textBox_PartMachID;
         private System.Windows.Forms.Label label_PartMax;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox_PartMax;
+        private System.Windows.Forms.Button btn_addPartSave;
+        private System.Windows.Forms.Button btn_addPartCancel;
     }
 }

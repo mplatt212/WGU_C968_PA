@@ -80,7 +80,7 @@ namespace C968_PA_MPlatt
             this.btn_addPart.TabIndex = 2;
             this.btn_addPart.Text = "Add";
             this.btn_addPart.UseVisualStyleBackColor = true;
-            this.btn_addPart.Click += new System.EventHandler(this.label1_Click);
+            this.btn_addPart.Click += new System.EventHandler(this.openAddPartForm_Click);
             // 
             // btn_modifyPart
             // 
@@ -90,6 +90,7 @@ namespace C968_PA_MPlatt
             this.btn_modifyPart.TabIndex = 2;
             this.btn_modifyPart.Text = "Modify";
             this.btn_modifyPart.UseVisualStyleBackColor = true;
+            this.btn_modifyPart.Click += new System.EventHandler(this.openModifyPartForm_Click);
             // 
             // btn_deletePart
             // 
@@ -155,7 +156,7 @@ namespace C968_PA_MPlatt
             this.label_Parts.Size = new System.Drawing.Size(51, 24);
             this.label_Parts.TabIndex = 3;
             this.label_Parts.Text = "Parts";
-            this.label_Parts.Click += new System.EventHandler(this.label1_Click);
+            this.label_Parts.Click += new System.EventHandler(this.openAddPartForm_Click);
             // 
             // labelProd
             // 
@@ -166,7 +167,7 @@ namespace C968_PA_MPlatt
             this.labelProd.Size = new System.Drawing.Size(84, 24);
             this.labelProd.TabIndex = 3;
             this.labelProd.Text = "Products";
-            this.labelProd.Click += new System.EventHandler(this.label1_Click);
+            this.labelProd.Click += new System.EventHandler(this.openAddPartForm_Click);
             // 
             // labelIMS
             // 
@@ -177,7 +178,7 @@ namespace C968_PA_MPlatt
             this.labelIMS.Size = new System.Drawing.Size(258, 24);
             this.labelIMS.TabIndex = 3;
             this.labelIMS.Text = "Inventory Mangement System";
-            this.labelIMS.Click += new System.EventHandler(this.label1_Click);
+            this.labelIMS.Click += new System.EventHandler(this.openAddPartForm_Click);
             // 
             // searchInputParts
             // 

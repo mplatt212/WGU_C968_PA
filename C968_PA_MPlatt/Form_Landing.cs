@@ -21,9 +21,16 @@ namespace C968_PA_MPlatt
             dgParts.DataSource = Inventory.DefaultParts();
         }
         
-        private void label1_Click(object sender, EventArgs e)
+        private void openAddPartForm_Click(object sender, EventArgs e)
         {
-            Console.WriteLine()
+            Form_AddPart partForm = new Form_AddPart();
+            partForm.Show();
+        }
+
+        private void openModifyPartForm_Click(object sender, EventArgs e)
+        {
+            Form_ModifyPart partForm = new Form_ModifyPart();
+            partForm.Show();
         }
 
         private void btn_closeProg_Click(object sender, EventArgs e)

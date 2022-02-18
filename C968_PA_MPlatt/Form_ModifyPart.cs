@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C968_PA_MPlatt
 {
-    public partial class Form_AddPart : Form
+    public partial class Form_ModifyPart : Form
     {
-        public Form_AddPart()
+        public Form_ModifyPart()
         {
             InitializeComponent();
         }
@@ -63,22 +63,6 @@ namespace C968_PA_MPlatt
             {
                 e.Handled = true;
             }
-        }
-
-        public void savePart(object sender, EventArgs e)
-        {
-            Console.WriteLine(textBox_PartID.Text);
-            //public int id = int.Parse(textBox_PartID.Text);
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
