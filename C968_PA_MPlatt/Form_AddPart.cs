@@ -12,6 +12,15 @@ namespace C968_PA_MPlatt
 {
     public partial class Form_AddPart : Form
     {
+        public int id;
+        public string name;
+        public int qty;
+        public decimal price;
+        public int max;
+        public int min;
+        public int machineID;
+        public string companyName;
+
         public Form_AddPart()
         {
             InitializeComponent();
@@ -67,13 +76,82 @@ namespace C968_PA_MPlatt
 
         public void savePart(object sender, EventArgs e)
         {
-            Console.WriteLine(textBox_PartID.Text);
-            //public int id = int.Parse(textBox_PartID.Text);
+            //Error handling for PartID
+            if (textBox_PartID.Text == "")
+            {
+                textBox_PartID.Invalidate();
+                MessageBox.Show("Part ID is a required field.");
+                textBox_PartID.BackColor = Color.Red;
+            } else
+            {
+                id = int.Parse(textBox_PartID.Text);
+                textBox_PartID.BackColor = Color.White;
+            }
+            //Error handling for PartName
+            if (textBox_PartName.Text == "")
+            {
+                textBox_PartName.Invalidate();
+                MessageBox.Show("Name is a required field.");
+                textBox_PartName.BackColor = Color.Red;
+            }
+            else
+            {
+                name = textBox_PartName.Text;
+                textBox_PartName.BackColor = Color.White;
+            }
+            //Error handling for Inventory
+            if (textBox_PartQty.Text == "")
+            {
+                textBox_PartQty.Invalidate();
+                MessageBox.Show("Inventory is a required field.");
+                textBox_PartQty.BackColor = Color.Red;
+            }
+            else
+            {
+                qty = int.Parse(textBox_PartQty.Text);
+                textBox_PartQty.BackColor = Color.White;
+            }
+            //Error handling for PartPrice
+            if (textBox_PartPrice.Text == "")
+            {
+                textBox_PartPrice.Invalidate();
+                MessageBox.Show("Price is a required field.");
+                textBox_PartPrice.BackColor = Color.Red;
+            }
+            else
+            {
+                price = decimal.Parse(textBox_PartPrice.Text);
+                textBox_PartPrice.BackColor = Color.White;
+            }
+            //Error handling for PartMin
+            if (textBox_PartMin.Text == "")
+            {
+                textBox_PartMin.Invalidate();
+                MessageBox.Show("Minimum is a required field.");
+                textBox_PartMin.BackColor = Color.Red;
+            }
+            else
+            {
+                min = int.Parse(textBox_PartMin.Text);
+                textBox_PartMin.BackColor = Color.White;
+            }
+            //Error handling for PartMax
+            if (textBox_PartMax.Text == "")
+            {
+                textBox_PartMax.Invalidate();
+                MessageBox.Show("Maximum is a required field.");
+                textBox_PartMax.BackColor = Color.Red;
+            }
+            else
+            {
+                max = int.Parse(textBox_PartMax.Text);
+                textBox_PartMax.BackColor = Color.White;
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
+        
         }
 
         private void label1_Click(object sender, EventArgs e)
