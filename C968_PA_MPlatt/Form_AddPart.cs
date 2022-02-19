@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using C968_PA_MPlatt.Models;
 
 namespace C968_PA_MPlatt
 {
@@ -24,6 +25,19 @@ namespace C968_PA_MPlatt
         public Form_AddPart()
         {
             InitializeComponent();
+            radioButton_Inhouse.Checked = true;
+        }
+
+        private void MachineID_CoName_Change(object sender, EventArgs e)
+        {
+            if (radioButton_Inhouse.Checked == true)
+            {
+                label_MachineID_CoName.Text = "Machine ID";
+            }
+            else
+            {
+                label_MachineID_CoName.Text = "Company Name";
+            }
         }
 
         private void textBoxPartID_KeyPress(object sender, KeyPressEventArgs e)
@@ -36,7 +50,7 @@ namespace C968_PA_MPlatt
 
         private void textBoxPartName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -130,6 +144,10 @@ namespace C968_PA_MPlatt
                 MessageBox.Show("Minimum is a required field.");
                 textBox_PartMin.BackColor = Color.Red;
             }
+            else if(int.Parse(textBox_PartMin.Text) >= qty)
+            {
+                MessageBox.Show("Minimum must be less than inventory.");
+            }
             else
             {
                 min = int.Parse(textBox_PartMin.Text);
@@ -146,6 +164,42 @@ namespace C968_PA_MPlatt
             {
                 max = int.Parse(textBox_PartMax.Text);
                 textBox_PartMax.BackColor = Color.White;
+            }
+
+            //Error handling for MachineID and CompanyName
+            if (radioButton_Inhouse.Checked == true && textBox_PartMachID_CoName.Text == "")
+            {
+                textBox_PartMachID_CoName.Invalidate();
+                MessageBox.Show("MachineID is a required field.");
+                textBox_PartMachID_CoName.BackColor = Color.Red;
+            }
+            else if(radioButton_Outsourced.Checked == true && textBox_PartMachID_CoName.Text == "")
+            {
+                textBox_PartMax.Invalidate();
+                MessageBox.Show("Company name is a required field.");
+                textBox_PartMachID_CoName.BackColor = Color.Red;
+            }
+            else if(radioButton_Inhouse.Checked == true)
+            {
+                machineID = int.Parse(textBox_PartMachID_CoName.Text);
+                textBox_PartMachID_CoName.BackColor = Color.White;
+            }
+            else if (radioButton_Outsourced.Checked == true)
+            {
+                companyName = textBox_PartMachID_CoName.Text;
+                textBox_PartMachID_CoName.BackColor = Color.White;
+            }
+
+            //Add new part and close out the form
+            if (radioButton_Inhouse.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && machineID != 0)
+            {
+                Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
+                this.Close();
+            }
+            else if (radioButton_Inhouse.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && companyName != "")
+            {
+                Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
+                this.Close();
             }
         }
 

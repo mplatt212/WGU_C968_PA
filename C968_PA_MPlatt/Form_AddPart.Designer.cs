@@ -44,7 +44,7 @@ namespace C968_PA_MPlatt
             this.label_PartMin = new System.Windows.Forms.Label();
             this.textBox_PartMin = new System.Windows.Forms.TextBox();
             this.label_MachineID_CoName = new System.Windows.Forms.Label();
-            this.textBox_PartMachID = new System.Windows.Forms.TextBox();
+            this.textBox_PartMachID_CoName = new System.Windows.Forms.TextBox();
             this.label_PartMax = new System.Windows.Forms.Label();
             this.textBox_PartMax = new System.Windows.Forms.TextBox();
             this.btn_addPartSave = new System.Windows.Forms.Button();
@@ -76,9 +76,9 @@ namespace C968_PA_MPlatt
             this.radioButton_Inhouse.Name = "radioButton_Inhouse";
             this.radioButton_Inhouse.Size = new System.Drawing.Size(93, 24);
             this.radioButton_Inhouse.TabIndex = 2;
-            this.radioButton_Inhouse.TabStop = true;
             this.radioButton_Inhouse.Text = "In-House";
             this.radioButton_Inhouse.UseVisualStyleBackColor = true;
+            this.radioButton_Inhouse.Click += new System.EventHandler(this.MachineID_CoName_Change);
             // 
             // radioButton_Outsourced
             // 
@@ -88,9 +88,9 @@ namespace C968_PA_MPlatt
             this.radioButton_Outsourced.Name = "radioButton_Outsourced";
             this.radioButton_Outsourced.Size = new System.Drawing.Size(110, 24);
             this.radioButton_Outsourced.TabIndex = 2;
-            this.radioButton_Outsourced.TabStop = true;
             this.radioButton_Outsourced.Text = "Outsourced";
             this.radioButton_Outsourced.UseVisualStyleBackColor = true;
+            this.radioButton_Outsourced.Click += new System.EventHandler(this.MachineID_CoName_Change);
             // 
             // textBox_PartID
             // 
@@ -203,14 +203,14 @@ namespace C968_PA_MPlatt
             this.label_MachineID_CoName.TabIndex = 1;
             this.label_MachineID_CoName.Text = "Machine ID";
             // 
-            // textBox_PartMachID
+            // textBox_PartMachID_CoName
             // 
-            this.textBox_PartMachID.Location = new System.Drawing.Point(234, 381);
-            this.textBox_PartMachID.MaxLength = 10;
-            this.textBox_PartMachID.Name = "textBox_PartMachID";
-            this.textBox_PartMachID.Size = new System.Drawing.Size(159, 20);
-            this.textBox_PartMachID.TabIndex = 3;
-            this.textBox_PartMachID.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMachID_CoName.Location = new System.Drawing.Point(234, 381);
+            this.textBox_PartMachID_CoName.MaxLength = 10;
+            this.textBox_PartMachID_CoName.Name = "textBox_PartMachID_CoName";
+            this.textBox_PartMachID_CoName.Size = new System.Drawing.Size(159, 20);
+            this.textBox_PartMachID_CoName.TabIndex = 3;
+            this.textBox_PartMachID_CoName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label_PartMax
             // 
@@ -258,7 +258,7 @@ namespace C968_PA_MPlatt
             this.ClientSize = new System.Drawing.Size(534, 511);
             this.Controls.Add(this.btn_addPartCancel);
             this.Controls.Add(this.btn_addPartSave);
-            this.Controls.Add(this.textBox_PartMachID);
+            this.Controls.Add(this.textBox_PartMachID_CoName);
             this.Controls.Add(this.textBox_PartMax);
             this.Controls.Add(this.textBox_PartMin);
             this.Controls.Add(this.textBox_PartPrice);
@@ -300,7 +300,7 @@ namespace C968_PA_MPlatt
         private System.Windows.Forms.Label label_PartMin;
         private System.Windows.Forms.TextBox textBox_PartMin;
         private System.Windows.Forms.Label label_MachineID_CoName;
-        private System.Windows.Forms.TextBox textBox_PartMachID;
+        private System.Windows.Forms.TextBox textBox_PartMachID_CoName;
         private System.Windows.Forms.Label label_PartMax;
         private System.Windows.Forms.TextBox textBox_PartMax;
         private System.Windows.Forms.Button btn_addPartSave;

@@ -23,9 +23,9 @@ namespace C968_PA_MPlatt.Models
 
         public static BindingList<Part> DefaultParts()
         {
-            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 1));
-            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 0, 1));
-            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 0, 1));
+            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 1, 22));
+            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 0, 1, "Intel"));
+            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 0, 1, 44));
             return AllParts;
         }
 
