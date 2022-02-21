@@ -250,6 +250,7 @@ namespace C968_PA_MPlatt
             this.btn_addPartCancel.TabIndex = 4;
             this.btn_addPartCancel.Text = "Cancel";
             this.btn_addPartCancel.UseVisualStyleBackColor = true;
+            this.btn_addPartCancel.Click += new System.EventHandler(this.closeForm);
             // 
             // Form_AddPart
             // 

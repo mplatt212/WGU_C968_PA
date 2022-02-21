@@ -15,17 +15,17 @@ namespace C968_PA_MPlatt.Models
 
         public static BindingList<Product> DefaultProducts()
         {
-            Products.Add(new Product(1, "Laptop", 599.99, 3, 0, 1));
-            Products.Add(new Product(2, "Web Book", 299.99, 5, 0, 1));
-            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 0, 1));
+            Products.Add(new Product(1, "Laptop", 599.99, 3, 0, 5));
+            Products.Add(new Product(2, "Web Book", 299.99, 5, 0, 10));
+            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 0, 5));
             return Products;
         }
 
         public static BindingList<Part> DefaultParts()
         {
-            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 1, 22));
-            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 0, 1, "Intel"));
-            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 0, 1, 44));
+            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 0, 12, "Intel"));
+            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
             return AllParts;
         }
 

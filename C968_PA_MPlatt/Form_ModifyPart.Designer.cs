@@ -29,17 +29,17 @@ namespace C968_PA_MPlatt
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_modMachID_CoName = new System.Windows.Forms.TextBox();
+            this.textBox_modMax = new System.Windows.Forms.TextBox();
+            this.textBox_modMin = new System.Windows.Forms.TextBox();
+            this.textBox_modPrice = new System.Windows.Forms.TextBox();
             this.label_MachineID_CoName = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_modQty = new System.Windows.Forms.TextBox();
             this.label_PartMax = new System.Windows.Forms.Label();
             this.label_PartMin = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_modName = new System.Windows.Forms.TextBox();
             this.label_PartPrice = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_modPartID = new System.Windows.Forms.TextBox();
             this.label_Inventory = new System.Windows.Forms.Label();
             this.radioButton_Outsourced = new System.Windows.Forms.RadioButton();
             this.label_PartName = new System.Windows.Forms.Label();
@@ -51,40 +51,40 @@ namespace C968_PA_MPlatt
             this.btn_modifyPartSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox7
+            // textBox_modMachID_CoName
             // 
-            this.textBox7.Location = new System.Drawing.Point(218, 378);
-            this.textBox7.MaxLength = 10;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(159, 20);
-            this.textBox7.TabIndex = 21;
+            this.textBox_modMachID_CoName.Location = new System.Drawing.Point(218, 378);
+            this.textBox_modMachID_CoName.MaxLength = 10;
+            this.textBox_modMachID_CoName.Name = "textBox_modMachID_CoName";
+            this.textBox_modMachID_CoName.Size = new System.Drawing.Size(159, 20);
+            this.textBox_modMachID_CoName.TabIndex = 21;
             // 
-            // textBox8
+            // textBox_modMax
             // 
-            this.textBox8.Location = new System.Drawing.Point(366, 315);
-            this.textBox8.MaxLength = 10;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(65, 20);
-            this.textBox8.TabIndex = 19;
-            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMax_KeyPress);
+            this.textBox_modMax.Location = new System.Drawing.Point(366, 315);
+            this.textBox_modMax.MaxLength = 10;
+            this.textBox_modMax.Name = "textBox_modMax";
+            this.textBox_modMax.Size = new System.Drawing.Size(65, 20);
+            this.textBox_modMax.TabIndex = 19;
+            this.textBox_modMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMax_KeyPress);
             // 
-            // textBox6
+            // textBox_modMin
             // 
-            this.textBox6.Location = new System.Drawing.Point(218, 315);
-            this.textBox6.MaxLength = 10;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(65, 20);
-            this.textBox6.TabIndex = 18;
-            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMin_KeyPress);
+            this.textBox_modMin.Location = new System.Drawing.Point(218, 315);
+            this.textBox_modMin.MaxLength = 10;
+            this.textBox_modMin.Name = "textBox_modMin";
+            this.textBox_modMin.Size = new System.Drawing.Size(65, 20);
+            this.textBox_modMin.TabIndex = 18;
+            this.textBox_modMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMin_KeyPress);
             // 
-            // textBox5
+            // textBox_modPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(218, 261);
-            this.textBox5.MaxLength = 10;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 20);
-            this.textBox5.TabIndex = 17;
-            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartPrice_KeyPress);
+            this.textBox_modPrice.Location = new System.Drawing.Point(218, 261);
+            this.textBox_modPrice.MaxLength = 10;
+            this.textBox_modPrice.Name = "textBox_modPrice";
+            this.textBox_modPrice.Size = new System.Drawing.Size(159, 20);
+            this.textBox_modPrice.TabIndex = 17;
+            this.textBox_modPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartPrice_KeyPress);
             // 
             // label_MachineID_CoName
             // 
@@ -96,14 +96,14 @@ namespace C968_PA_MPlatt
             this.label_MachineID_CoName.TabIndex = 7;
             this.label_MachineID_CoName.Text = "Machine ID";
             // 
-            // textBox4
+            // textBox_modQty
             // 
-            this.textBox4.Location = new System.Drawing.Point(218, 208);
-            this.textBox4.MaxLength = 10;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(159, 20);
-            this.textBox4.TabIndex = 16;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartQty_KeyPress);
+            this.textBox_modQty.Location = new System.Drawing.Point(218, 208);
+            this.textBox_modQty.MaxLength = 10;
+            this.textBox_modQty.Name = "textBox_modQty";
+            this.textBox_modQty.Size = new System.Drawing.Size(159, 20);
+            this.textBox_modQty.TabIndex = 16;
+            this.textBox_modQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartQty_KeyPress);
             // 
             // label_PartMax
             // 
@@ -125,14 +125,14 @@ namespace C968_PA_MPlatt
             this.label_PartMin.TabIndex = 9;
             this.label_PartMin.Text = "Min";
             // 
-            // textBox3
+            // textBox_modName
             // 
-            this.textBox3.Location = new System.Drawing.Point(218, 157);
-            this.textBox3.MaxLength = 20;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(159, 20);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartName_KeyPress);
+            this.textBox_modName.Location = new System.Drawing.Point(218, 157);
+            this.textBox_modName.MaxLength = 20;
+            this.textBox_modName.Name = "textBox_modName";
+            this.textBox_modName.Size = new System.Drawing.Size(159, 20);
+            this.textBox_modName.TabIndex = 15;
+            this.textBox_modName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartName_KeyPress);
             // 
             // label_PartPrice
             // 
@@ -144,14 +144,14 @@ namespace C968_PA_MPlatt
             this.label_PartPrice.TabIndex = 11;
             this.label_PartPrice.Text = "Price";
             // 
-            // textBox2
+            // textBox_modPartID
             // 
-            this.textBox2.Location = new System.Drawing.Point(218, 110);
-            this.textBox2.MaxLength = 3;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 20;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartID_KeyPress);
+            this.textBox_modPartID.Location = new System.Drawing.Point(218, 110);
+            this.textBox_modPartID.MaxLength = 3;
+            this.textBox_modPartID.Name = "textBox_modPartID";
+            this.textBox_modPartID.Size = new System.Drawing.Size(159, 20);
+            this.textBox_modPartID.TabIndex = 20;
+            this.textBox_modPartID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartID_KeyPress);
             // 
             // label_Inventory
             // 
@@ -232,6 +232,7 @@ namespace C968_PA_MPlatt
             this.btn_modifyPartCancel.TabIndex = 22;
             this.btn_modifyPartCancel.Text = "Cancel";
             this.btn_modifyPartCancel.UseVisualStyleBackColor = true;
+            this.btn_modifyPartCancel.Click += new System.EventHandler(this.btn_modifyPartCancel_Click);
             // 
             // btn_modifyPartSave
             // 
@@ -241,6 +242,7 @@ namespace C968_PA_MPlatt
             this.btn_modifyPartSave.TabIndex = 23;
             this.btn_modifyPartSave.Text = "Save";
             this.btn_modifyPartSave.UseVisualStyleBackColor = true;
+            this.btn_modifyPartSave.Click += new System.EventHandler(this.btn_modifyPartSave_Click);
             // 
             // Form_ModifyPart
             // 
@@ -249,17 +251,17 @@ namespace C968_PA_MPlatt
             this.ClientSize = new System.Drawing.Size(534, 511);
             this.Controls.Add(this.btn_modifyPartCancel);
             this.Controls.Add(this.btn_modifyPartSave);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox_modMachID_CoName);
+            this.Controls.Add(this.textBox_modMax);
+            this.Controls.Add(this.textBox_modMin);
+            this.Controls.Add(this.textBox_modPrice);
             this.Controls.Add(this.label_MachineID_CoName);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox_modQty);
             this.Controls.Add(this.label_PartMax);
             this.Controls.Add(this.label_PartMin);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_modName);
             this.Controls.Add(this.label_PartPrice);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_modPartID);
             this.Controls.Add(this.label_Inventory);
             this.Controls.Add(this.radioButton_Outsourced);
             this.Controls.Add(this.label_PartName);
@@ -276,17 +278,17 @@ namespace C968_PA_MPlatt
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_modMachID_CoName;
+        private System.Windows.Forms.TextBox textBox_modMax;
+        private System.Windows.Forms.TextBox textBox_modMin;
+        private System.Windows.Forms.TextBox textBox_modPrice;
         private System.Windows.Forms.Label label_MachineID_CoName;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_modQty;
         private System.Windows.Forms.Label label_PartMax;
         private System.Windows.Forms.Label label_PartMin;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_modName;
         private System.Windows.Forms.Label label_PartPrice;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_modPartID;
         private System.Windows.Forms.Label label_Inventory;
         private System.Windows.Forms.RadioButton radioButton_Outsourced;
         private System.Windows.Forms.Label label_PartName;

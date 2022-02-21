@@ -60,6 +60,7 @@ namespace C968_PA_MPlatt
             this.dgParts.Size = new System.Drawing.Size(550, 275);
             this.dgParts.TabIndex = 0;
             this.dgParts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgParts_CellContentClick);
+            this.dgParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // dgProducts
             // 
@@ -71,6 +72,7 @@ namespace C968_PA_MPlatt
             this.dgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProducts.Size = new System.Drawing.Size(550, 275);
             this.dgProducts.TabIndex = 1;
+            this.dgProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // btn_addPart
             // 
@@ -100,6 +102,7 @@ namespace C968_PA_MPlatt
             this.btn_deletePart.TabIndex = 2;
             this.btn_deletePart.Text = "Delete";
             this.btn_deletePart.UseVisualStyleBackColor = true;
+            this.btn_deletePart.Click += new System.EventHandler(this.btn_deletePart_Click);
             // 
             // btn_addProd
             // 
@@ -130,7 +133,7 @@ namespace C968_PA_MPlatt
             // 
             // btn_closeProg
             // 
-            this.btn_closeProg.Location = new System.Drawing.Point(993, 516);
+            this.btn_closeProg.Location = new System.Drawing.Point(1093, 514);
             this.btn_closeProg.Name = "btn_closeProg";
             this.btn_closeProg.Size = new System.Drawing.Size(65, 34);
             this.btn_closeProg.TabIndex = 2;

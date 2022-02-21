@@ -160,6 +160,10 @@ namespace C968_PA_MPlatt
                 MessageBox.Show("Maximum is a required field.");
                 textBox_PartMax.BackColor = Color.Red;
             }
+            else if (int.Parse(textBox_PartMax.Text) <= qty)
+            {
+                MessageBox.Show("Maximum must be greater than inventory.");
+            }
             else
             {
                 max = int.Parse(textBox_PartMax.Text);
@@ -196,11 +200,16 @@ namespace C968_PA_MPlatt
                 Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
                 this.Close();
             }
-            else if (radioButton_Inhouse.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && companyName != "")
+            else if (radioButton_Outsourced.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && companyName != "")
             {
                 Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
                 this.Close();
             }
+        }
+
+        private void closeForm(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
