@@ -112,6 +112,7 @@ namespace C968_PA_MPlatt
             this.btn_addProd.TabIndex = 2;
             this.btn_addProd.Text = "Add";
             this.btn_addProd.UseVisualStyleBackColor = true;
+            this.btn_addProd.Click += new System.EventHandler(this.btn_addProd_Click);
             // 
             // btn_modifyProd
             // 
@@ -130,6 +131,7 @@ namespace C968_PA_MPlatt
             this.btn_deleteProd.TabIndex = 2;
             this.btn_deleteProd.Text = "Delete";
             this.btn_deleteProd.UseVisualStyleBackColor = true;
+            this.btn_deleteProd.Click += new System.EventHandler(this.btn_deleteProd_Click);
             // 
             // btn_closeProg
             // 

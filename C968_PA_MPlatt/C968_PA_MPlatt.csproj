@@ -52,6 +52,12 @@
     <Compile Include="Form_AddPart.Designer.cs">
       <DependentUpon>Form_AddPart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AddProduct.Designer.cs">
+      <DependentUpon>Form_AddProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Landing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_AddPart.resx">
       <DependentUpon>Form_AddPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_AddProduct.resx">
+      <DependentUpon>Form_AddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Landing.resx">
       <DependentUpon>Form_Landing.cs</DependentUpon>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using C968_PA_MPlatt.Models;
 
 namespace C968_PA_MPlatt.Models
@@ -38,32 +39,56 @@ namespace C968_PA_MPlatt.Models
         public static void addProduct(Product product)
         {
             Products.Add(new Product());
-            Console.WriteLine("hello test");
         }
 
-        public static bool removeProduct(int ProductID)
+        public static bool removeProduct(int index)
         {
-            return true;
+            string message = "Are you sure you want to delete this product?";
+            string title = "Delete Product";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult alert = MessageBox.Show(message, title, buttons);
+            if (alert == DialogResult.Yes)
+            {
+                Products.RemoveAt(index);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static Product lookupProduct(int ProductID)
+/*        public static Product lookupProduct(int ProductID)
         {
             return new Product();
-        }
+        }*/
 
-        public static void updateProduct(int ProductID, Product product)
+        public static void updateProduct(int index, Product product)
         {
-
+            Products.RemoveAt(index);
+            Products.Add(product);
         }
 
         public static void addPart(Part part)
         {
-            
+            AllParts.Add(part);
         }
 
         public static bool deletePart(Part part)
         {
-            return true;
+            string message = "Are you sure you want to delete this part?";
+            string title = "Delete Part";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult alert = MessageBox.Show(message, title, buttons);
+            if (alert == DialogResult.Yes)
+            {
+                AllParts.Remove(part);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 /*        public static Part lookupPart(int ProductID)
@@ -71,9 +96,10 @@ namespace C968_PA_MPlatt.Models
             return new Part();
         }*/
 
-        public static void updatePart(int ProductID, Part part)
+        public static void updatePart(int index, Part part)
         {
-
+            AllParts.RemoveAt(index);
+            AllParts.Add(part);
         }
     }
 }

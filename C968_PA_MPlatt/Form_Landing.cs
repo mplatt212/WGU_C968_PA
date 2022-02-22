@@ -33,7 +33,7 @@ namespace C968_PA_MPlatt
         {
             if (!dgParts.CurrentRow.Selected)
             {
-                MessageBox.Show("No rows currently selected.");
+                MessageBox.Show("No row currently selected.");
                 return;
             } else
             {
@@ -73,7 +73,16 @@ namespace C968_PA_MPlatt
 
         private void btn_deletePart_Click(object sender, EventArgs e)
         {
-            string message = "Are you sure you want to delete this part?";
+            if(!dgParts.CurrentRow.Selected)
+            {
+                MessageBox.Show("No row currently selected.");
+            } else
+            {
+                Part currentPart = dgParts.CurrentRow.DataBoundItem as Part;
+                Inventory.deletePart(currentPart);
+            }
+
+/*            string message = "Are you sure you want to delete this part?";
             string title = "Delete Part";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult alert = MessageBox.Show(message, title, buttons);
@@ -84,7 +93,28 @@ namespace C968_PA_MPlatt
             } else
             {
                 return;
+            }*/
+        }
+
+        private void btn_deleteProd_Click(object sender, EventArgs e)
+        {
+            if (!dgProducts.CurrentRow.Selected)
+            {
+                MessageBox.Show("No row currently selected.");
             }
+            else
+            {
+                //Product currentProduct = dgProducts.CurrentRow.DataBoundItem as Product;
+                int index = dgProducts.CurrentRow.Index;
+                Inventory.removeProduct(index);
+            }
+
+        }
+
+        private void btn_addProd_Click(object sender, EventArgs e)
+        {
+            Form_AddProduct productForm = new Form_AddProduct();
+            productForm.Show();
         }
     }
 }

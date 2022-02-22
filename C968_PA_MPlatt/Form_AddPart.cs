@@ -197,12 +197,14 @@ namespace C968_PA_MPlatt
             //Add new part and close out the form
             if (radioButton_Inhouse.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && machineID != 0)
             {
-                Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
+                //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
+                Inventory.addPart(new Inhouse(id, name, price, qty, min, max, machineID));
                 this.Close();
             }
             else if (radioButton_Outsourced.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && companyName != "")
             {
-                Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
+                //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
+                Inventory.addPart(new Outsourced(id, name, price, qty, min, max, companyName));
                 this.Close();
             }
         }

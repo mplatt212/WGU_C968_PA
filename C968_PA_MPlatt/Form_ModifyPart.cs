@@ -100,24 +100,27 @@ namespace C968_PA_MPlatt
 
         private void btn_modifyPartSave_Click(object sender, EventArgs e)
         {
-            Inventory.AllParts.Remove(selectedPart);
-
+            //Inventory.AllParts.Remove(selectedPart);
+            int index = Inventory.AllParts.IndexOf(selectedPart);
             int id = int.Parse(textBox_modPartID.Text);
             string name = textBox_modName.Text;
             int qty = int.Parse(textBox_modQty.Text);
             decimal price = decimal.Parse(textBox_modPrice.Text);
             int min = int.Parse(textBox_modMin.Text);
             int max = int.Parse(textBox_modMax.Text);
+
             if (radioButton_Inhouse.Checked == true) 
             { 
                 int machineID = int.Parse(textBox_modMachID_CoName.Text);
-
-                Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
+                Inventory.updatePart(index, new Inhouse(id, name, price, qty, min, max, machineID));
+                //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
             } else
             {
                 string coName = textBox_modMachID_CoName.Text;
-                Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, coName));
+                Inventory.updatePart(index, new Outsourced(id, name, price, qty, min, max, coName));
+                //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, coName));
             }
+            this.Close();
         }
     }
 }
