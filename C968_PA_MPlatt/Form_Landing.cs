@@ -116,5 +116,19 @@ namespace C968_PA_MPlatt
             Form_AddProduct productForm = new Form_AddProduct();
             productForm.Show();
         }
+
+        private void btn_modifyProd_Click(object sender, EventArgs e)
+        {
+            if(dgProducts.CurrentRow.Selected)
+            {
+                int index = dgProducts.CurrentRow.Index;
+                Product selectedProduct = dgProducts.CurrentRow.DataBoundItem as Product;
+                Form_ModifyProduct productForm = new Form_ModifyProduct(selectedProduct, index);
+                productForm.Show();
+            } else
+            {
+                MessageBox.Show("Please select a product to modify.");
+            }
+        }
     }
 }

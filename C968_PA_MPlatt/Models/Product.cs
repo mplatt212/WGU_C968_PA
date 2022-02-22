@@ -41,13 +41,14 @@ namespace C968_PA_MPlatt.Models
         }
 
         //Methods
-/*        public static void addAssociatedPart(Part)
+        public static void addAssociatedPart(Part part)
         {
+            AssociatedParts.Add(part);
+        }
 
-        }*/
-
-        public static bool removeAssociatedPart(int ProductID)
+        public static bool removeAssociatedPart(int index)
         {
+            AssociatedParts.RemoveAt(index);
             return true;
         }
 

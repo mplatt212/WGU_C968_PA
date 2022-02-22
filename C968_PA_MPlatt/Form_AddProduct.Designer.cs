@@ -45,16 +45,16 @@ namespace C968_PA_MPlatt
             this.label_AddProduct = new System.Windows.Forms.Label();
             this.searchInputParts = new System.Windows.Forms.TextBox();
             this.btn_searchPart = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgAssocParts = new System.Windows.Forms.DataGridView();
             this.btn_prodCancel = new System.Windows.Forms.Button();
             this.btn_prodSave = new System.Windows.Forms.Button();
             this.btn_prodDelete = new System.Windows.Forms.Button();
             this.btn_prodAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgParts = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgParts)).BeginInit();
+            this.dgPartsForProds = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAssocParts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPartsForProds)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_ProdMax
@@ -134,6 +134,7 @@ namespace C968_PA_MPlatt
             // 
             // textBox_ProdID
             // 
+            this.textBox_ProdID.Enabled = false;
             this.textBox_ProdID.Location = new System.Drawing.Point(200, 201);
             this.textBox_ProdID.MaxLength = 3;
             this.textBox_ProdID.Name = "textBox_ProdID";
@@ -204,13 +205,17 @@ namespace C968_PA_MPlatt
             this.btn_searchPart.Text = "Search";
             this.btn_searchPart.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgAssocParts
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(557, 374);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(475, 176);
-            this.dataGridView2.TabIndex = 19;
+            this.dgAssocParts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAssocParts.Location = new System.Drawing.Point(557, 374);
+            this.dgAssocParts.MultiSelect = false;
+            this.dgAssocParts.Name = "dgAssocParts";
+            this.dgAssocParts.ReadOnly = true;
+            this.dgAssocParts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgAssocParts.Size = new System.Drawing.Size(475, 176);
+            this.dgAssocParts.TabIndex = 19;
+            this.dgAssocParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // btn_prodCancel
             // 
@@ -220,6 +225,7 @@ namespace C968_PA_MPlatt
             this.btn_prodCancel.TabIndex = 20;
             this.btn_prodCancel.Text = "Cancel";
             this.btn_prodCancel.UseVisualStyleBackColor = true;
+            this.btn_prodCancel.Click += new System.EventHandler(this.btn_prodCancel_Click);
             // 
             // btn_prodSave
             // 
@@ -229,6 +235,7 @@ namespace C968_PA_MPlatt
             this.btn_prodSave.TabIndex = 21;
             this.btn_prodSave.Text = "Save";
             this.btn_prodSave.UseVisualStyleBackColor = true;
+            this.btn_prodSave.Click += new System.EventHandler(this.btn_prodSave_Click);
             // 
             // btn_prodDelete
             // 
@@ -238,6 +245,7 @@ namespace C968_PA_MPlatt
             this.btn_prodDelete.TabIndex = 20;
             this.btn_prodDelete.Text = "Delete";
             this.btn_prodDelete.UseVisualStyleBackColor = true;
+            this.btn_prodDelete.Click += new System.EventHandler(this.btn_prodDelete_Click);
             // 
             // btn_prodAdd
             // 
@@ -247,6 +255,7 @@ namespace C968_PA_MPlatt
             this.btn_prodAdd.TabIndex = 20;
             this.btn_prodAdd.Text = "Add";
             this.btn_prodAdd.UseVisualStyleBackColor = true;
+            this.btn_prodAdd.Click += new System.EventHandler(this.btn_prodAdd_Click);
             // 
             // label1
             // 
@@ -268,29 +277,29 @@ namespace C968_PA_MPlatt
             this.label2.TabIndex = 10;
             this.label2.Text = "Parts Associated with this Product";
             // 
-            // dgParts
+            // dgPartsForProds
             // 
-            this.dgParts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgParts.Location = new System.Drawing.Point(556, 124);
-            this.dgParts.MultiSelect = false;
-            this.dgParts.Name = "dgParts";
-            this.dgParts.ReadOnly = true;
-            this.dgParts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgParts.Size = new System.Drawing.Size(470, 176);
-            this.dgParts.TabIndex = 22;
-            this.dgParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
+            this.dgPartsForProds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPartsForProds.Location = new System.Drawing.Point(556, 124);
+            this.dgPartsForProds.MultiSelect = false;
+            this.dgPartsForProds.Name = "dgPartsForProds";
+            this.dgPartsForProds.ReadOnly = true;
+            this.dgPartsForProds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgPartsForProds.Size = new System.Drawing.Size(470, 176);
+            this.dgPartsForProds.TabIndex = 22;
+            this.dgPartsForProds.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // Form_AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1151, 672);
-            this.Controls.Add(this.dgParts);
+            this.Controls.Add(this.dgPartsForProds);
             this.Controls.Add(this.btn_prodAdd);
             this.Controls.Add(this.btn_prodDelete);
             this.Controls.Add(this.btn_prodCancel);
             this.Controls.Add(this.btn_prodSave);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgAssocParts);
             this.Controls.Add(this.searchInputParts);
             this.Controls.Add(this.btn_searchPart);
             this.Controls.Add(this.textBox_ProdMax);
@@ -311,8 +320,8 @@ namespace C968_PA_MPlatt
             this.Controls.Add(this.textBox1);
             this.Name = "Form_AddProduct";
             this.Text = "Product";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgParts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAssocParts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPartsForProds)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,13 +345,13 @@ namespace C968_PA_MPlatt
         private System.Windows.Forms.Label label_AddProduct;
         private System.Windows.Forms.TextBox searchInputParts;
         private System.Windows.Forms.Button btn_searchPart;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgAssocParts;
         private System.Windows.Forms.Button btn_prodCancel;
         private System.Windows.Forms.Button btn_prodSave;
         private System.Windows.Forms.Button btn_prodDelete;
         private System.Windows.Forms.Button btn_prodAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.DataGridView dgParts;
+        public System.Windows.Forms.DataGridView dgPartsForProds;
     }
 }

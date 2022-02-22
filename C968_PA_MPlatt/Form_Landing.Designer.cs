@@ -122,6 +122,7 @@ namespace C968_PA_MPlatt
             this.btn_modifyProd.TabIndex = 2;
             this.btn_modifyProd.Text = "Modify";
             this.btn_modifyProd.UseVisualStyleBackColor = true;
+            this.btn_modifyProd.Click += new System.EventHandler(this.btn_modifyProd_Click);
             // 
             // btn_deleteProd
             // 

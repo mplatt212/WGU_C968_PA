@@ -70,6 +70,12 @@
     <Compile Include="Form_ModifyPart.Designer.cs">
       <DependentUpon>Form_ModifyPart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ModifyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ModifyProduct.Designer.cs">
+      <DependentUpon>Form_ModifyProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Inhouse.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\Outsourced.cs" />
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ModifyPart.resx">
       <DependentUpon>Form_ModifyPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ModifyProduct.resx">
+      <DependentUpon>Form_ModifyProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

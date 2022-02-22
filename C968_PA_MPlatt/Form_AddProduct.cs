@@ -16,19 +16,23 @@ namespace C968_PA_MPlatt
         public int id;
         public string name;
         public int qty;
-        public decimal price;
+        public double price;
         public int max;
         public int min;
 
         public Form_AddProduct()
         {
             InitializeComponent();
-            dgParts.DataSource = Inventory.AllParts;
+            dgPartsForProds.DataSource = Inventory.AllParts;
+            dgAssocParts.DataSource = Product.AssociatedParts;
+            dgPartsForProds.AllowUserToAddRows = false;
+            dgAssocParts.AllowUserToAddRows = false;
         }
 
         private void myBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dgParts.ClearSelection();
+            dgPartsForProds.ClearSelection();
+            dgAssocParts.ClearSelection();
         }
 
         private void textBoxProdName_KeyPress(object sender, KeyPressEventArgs e)
@@ -69,6 +73,130 @@ namespace C968_PA_MPlatt
             {
                 e.Handled = true;
             }
+        }
+
+        private void btn_prodSave_Click(object sender, EventArgs e)
+        {
+            id = Inventory.Products.Count + 1;
+
+            //Error handling for PartName
+            if (textBox_ProdName.Text == "")
+            {
+                textBox_ProdName.Invalidate();
+                MessageBox.Show("Name is a required field.");
+                textBox_ProdName.BackColor = Color.Red;
+            }
+            else
+            {
+                name = textBox_ProdName.Text;
+                textBox_ProdName.BackColor = Color.White;
+            }
+            //Error handling for Inventory
+            if (textBox_ProdQty.Text == "")
+            {
+                textBox_ProdQty.Invalidate();
+                MessageBox.Show("Inventory is a required field.");
+                textBox_ProdQty.BackColor = Color.Red;
+            }
+            else
+            {
+                qty = int.Parse(textBox_ProdQty.Text);
+                textBox_ProdQty.BackColor = Color.White;
+            }
+            //Error handling for PartPrice
+            if (textBox_ProdPrice.Text == "")
+            {
+                textBox_ProdPrice.Invalidate();
+                MessageBox.Show("Price is a required field.");
+                textBox_ProdPrice.BackColor = Color.Red;
+            }
+            else
+            {
+                price = double.Parse(textBox_ProdPrice.Text);
+                textBox_ProdPrice.BackColor = Color.White;
+            }
+            //Error handling for PartMin
+            if (textBox_ProdMin.Text == "")
+            {
+                textBox_ProdMin.Invalidate();
+                MessageBox.Show("Minimum is a required field.");
+                textBox_ProdMin.BackColor = Color.Red;
+            }
+            else if (int.Parse(textBox_ProdMin.Text) >= qty)
+            {
+                MessageBox.Show("Minimum must be less than inventory.");
+            }
+            else
+            {
+                min = int.Parse(textBox_ProdMin.Text);
+                textBox_ProdMin.BackColor = Color.White;
+            }
+            //Error handling for PartMax
+            if (textBox_ProdMax.Text == "")
+            {
+                textBox_ProdMax.Invalidate();
+                MessageBox.Show("Maximum is a required field.");
+                textBox_ProdMax.BackColor = Color.Red;
+            }
+            else if (int.Parse(textBox_ProdMax.Text) <= qty)
+            {
+                MessageBox.Show("Maximum must be greater than inventory.");
+            }
+            else
+            {
+                max = int.Parse(textBox_ProdMax.Text);
+                textBox_ProdMax.BackColor = Color.White;
+            }
+
+            //Add new part and close out the form
+            if (name != "" && price != 0 && qty != 0 && min != 0 && max != 0)
+            {
+                Inventory.addProduct(new Product(id, name, price, qty, min, max));
+                this.Close();
+            } else
+            {
+                return;
+            }
+        }
+
+        private void btn_prodAdd_Click(object sender, EventArgs e)
+        {
+            if (dgPartsForProds.CurrentRow.Selected)
+            {
+                Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
+                Product.addAssociatedPart(part);
+            }
+            else
+            {
+                MessageBox.Show("Please select a part to add.");
+            }
+        }
+
+        private void btn_prodDelete_Click(object sender, EventArgs e)
+        {
+            if (Product.AssociatedParts.Count > 0)
+            {
+                if (dgAssocParts.CurrentRow.Selected)
+                {
+                    /*Part part = dgAssocParts.CurrentRow.DataBoundItem as Part;
+                    int id = part.PartID;*/
+                    int index = dgAssocParts.CurrentRow.Index;
+                    Product.removeAssociatedPart(index);
+                }
+                else
+                {
+                    MessageBox.Show("Please select an item to delete.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please add associated items first.");
+            }
+        }
+
+        private void btn_prodCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

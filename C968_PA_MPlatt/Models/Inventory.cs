@@ -38,7 +38,7 @@ namespace C968_PA_MPlatt.Models
 
         public static void addProduct(Product product)
         {
-            Products.Add(new Product());
+            Products.Add(product);
         }
 
         public static bool removeProduct(int index)
