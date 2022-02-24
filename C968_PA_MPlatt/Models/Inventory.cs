@@ -91,10 +91,11 @@ namespace C968_PA_MPlatt.Models
             }
         }
 
-/*        public static Part lookupPart(int ProductID)
+        public static Part lookupPart(int index)
         {
-            return new Part();
-        }*/
+            Part part = AllParts.ElementAt(index);
+            return part;
+        }
 
         public static void updatePart(int index, Part part)
         {

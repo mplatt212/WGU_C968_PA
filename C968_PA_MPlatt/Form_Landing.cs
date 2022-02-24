@@ -13,9 +13,10 @@ namespace C968_PA_MPlatt
 {
     public partial class formMain : System.Windows.Forms.Form
     {
+        Part currentPart;
+       
         public formMain()
         {
-            
             InitializeComponent();
             dgProducts.DataSource = Inventory.DefaultProducts();
             dgParts.DataSource = Inventory.DefaultParts();
@@ -31,13 +32,13 @@ namespace C968_PA_MPlatt
 
         private void openModifyPartForm_Click(object sender, EventArgs e)
         {
-            if (!dgParts.CurrentRow.Selected)
+            if (!dgParts.CurrentRow.Selected && currentPart == null)
             {
                 MessageBox.Show("No row currently selected.");
                 return;
             } else
             {
-                Part currentPart = dgParts.CurrentRow.DataBoundItem as Part;
+                //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 if (currentPart != null)
                 {
                     int index = dgParts.CurrentCell.RowIndex;
@@ -62,7 +63,13 @@ namespace C968_PA_MPlatt
 
         private void dgParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int index = e.RowIndex;
+            Console.WriteLine(index);
+            if (dgParts.CurrentRow != null)
+            {
+                this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
+                Console.WriteLine(currentPart.Name);
+            }
         }
 
         private void myBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -78,7 +85,7 @@ namespace C968_PA_MPlatt
                 MessageBox.Show("No row currently selected.");
             } else
             {
-                Part currentPart = dgParts.CurrentRow.DataBoundItem as Part;
+                //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 Inventory.deletePart(currentPart);
             }
 
@@ -119,7 +126,7 @@ namespace C968_PA_MPlatt
 
         private void btn_modifyProd_Click(object sender, EventArgs e)
         {
-            if(dgProducts.CurrentRow.Selected)
+            if(dgProducts.CurrentRow.Selected) 
             {
                 int index = dgProducts.CurrentRow.Index;
                 Product selectedProduct = dgProducts.CurrentRow.DataBoundItem as Product;
@@ -128,6 +135,37 @@ namespace C968_PA_MPlatt
             } else
             {
                 MessageBox.Show("Please select a product to modify.");
+            }
+        }
+
+        private void btn_searchPart_Click(object sender, EventArgs e)
+        {
+            string input = searchInputParts.Text;
+
+            if(Inventory.AllParts != null)
+            {
+                foreach (DataGridViewRow row in dgParts.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(input) | row.Cells[1].Value.ToString().ToLower().Contains(input.ToLower()))
+                    {
+                        row.Selected = true;
+                        int index = row.Index;
+                        Part part = Inventory.lookupPart(index);
+                        this.currentPart = part;
+                        break;
+                    }
+                }
+            } else
+            {
+                MessageBox.Show("Invalid entry.");
+            }
+        }
+
+        private void filterSearchParts(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -28,6 +28,7 @@ namespace C968_PA_MPlatt.Models
             this.InStock = 0;
             this.Min = 0;
             this.Max = 0;
+            //AssociatedParts = new BindingList<Part>();
         }
 
         public Product(int id, string name, double price, int qty, int min, int max)
@@ -38,10 +39,11 @@ namespace C968_PA_MPlatt.Models
             this.InStock = qty;
             this.Min = min;
             this.Max = max;
-        }
+            //AssociatedParts = new BindingList<Part>();
+    }
 
-        //Methods
-        public static void addAssociatedPart(Part part)
+    //Methods
+    public static void addAssociatedPart(Part part)
         {
             AssociatedParts.Add(part);
         }

@@ -26,7 +26,7 @@ namespace C968_PA_MPlatt
         {
             InitializeComponent();
             dgPartsForProds.DataSource = Inventory.AllParts;
-            dgAssocParts.DataSource = Product.AssociatedParts;
+            this.dgAssocParts.DataSource = Product.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
         }
@@ -50,7 +50,7 @@ namespace C968_PA_MPlatt
             textBox_modMax.Text = currentProd.Max.ToString();
 
             dgPartsForProds.DataSource = Inventory.AllParts;
-            dgAssocParts.DataSource = Product.AssociatedParts;
+            this.dgAssocParts.DataSource = Product.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
         }
