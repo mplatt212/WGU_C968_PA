@@ -17,7 +17,7 @@ namespace C968_PA_MPlatt.Models
         public int Min { get; set; }
         public int Max { get; set; }
 
-        public static BindingList<Part> AssociatedParts = new BindingList<Part>();
+        public BindingList<Part> AssociatedParts;
 
         //Constructor
         public Product()
@@ -28,10 +28,10 @@ namespace C968_PA_MPlatt.Models
             this.InStock = 0;
             this.Min = 0;
             this.Max = 0;
-            //AssociatedParts = new BindingList<Part>();
+            this.AssociatedParts = new BindingList<Part>();
         }
 
-        public Product(int id, string name, double price, int qty, int min, int max)
+        public Product(int id, string name, double price, int qty, int min, int max, BindingList<Part> associatedParts)
         {
             this.ProductID = id;
             this.Name = name;
@@ -39,17 +39,19 @@ namespace C968_PA_MPlatt.Models
             this.InStock = qty;
             this.Min = min;
             this.Max = max;
-            //AssociatedParts = new BindingList<Part>();
-    }
+            this.AssociatedParts = associatedParts;
+        }
 
-    //Methods
-    public static void addAssociatedPart(Part part)
+        //Methods
+        public void addAssociatedPart(Part part)
         {
-            AssociatedParts.Add(part);
+            //BindingList<Part> AssociatedParts = new BindingList<Part>();
+            this.AssociatedParts.Add(part);
         }
 
         public static bool removeAssociatedPart(int index)
         {
+            BindingList<Part> AssociatedParts = new BindingList<Part>();
             AssociatedParts.RemoveAt(index);
             return true;
         }
@@ -58,5 +60,11 @@ namespace C968_PA_MPlatt.Models
         {
             return Part;
         }*/
+
+        public static BindingList<Part> createNewList()
+        {
+            BindingList<Part> AssociatedParts = new BindingList<Part>();
+            return AssociatedParts;
+        }
     }
 }

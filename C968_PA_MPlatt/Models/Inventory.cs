@@ -16,9 +16,22 @@ namespace C968_PA_MPlatt.Models
 
         public static BindingList<Product> DefaultProducts()
         {
-            Products.Add(new Product(1, "Laptop", 599.99, 3, 0, 5));
-            Products.Add(new Product(2, "Web Book", 299.99, 5, 0, 10));
-            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 0, 5));
+            BindingList<Part> testPartsLaptop = new BindingList<Part>();
+            testPartsLaptop.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            testPartsLaptop.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
+
+            BindingList<Part> testPartsWebBook = new BindingList<Part>();
+            testPartsWebBook.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            testPartsWebBook.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
+            testPartsWebBook.Add(new Outsourced(2, "CPU", 899, 3, 0, 12, "Intel"));
+
+            BindingList<Part> testPartsPC = new BindingList<Part>();
+            testPartsPC.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+
+            Products.Add(new Product(1, "Laptop", 599.99, 3, 0, 5, testPartsLaptop));
+            Products.Add(new Product(2, "Web Book", 299.99, 5, 0, 10, testPartsWebBook));
+            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 0, 5, testPartsPC));
+
             return Products;
         }
 
@@ -58,10 +71,11 @@ namespace C968_PA_MPlatt.Models
             }
         }
 
-/*        public static Product lookupProduct(int ProductID)
+        public static Product lookupProduct(int index)
         {
-            return new Product();
-        }*/
+            Product product = Products.ElementAt(index);
+            return product;
+        }
 
         public static void updateProduct(int index, Product product)
         {

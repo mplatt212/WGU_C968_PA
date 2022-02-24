@@ -14,6 +14,9 @@ namespace C968_PA_MPlatt
     public partial class Form_ModifyProduct : Form
     {
         Product currentProd;
+        Part currentPart;
+        public BindingList<Part> associatedParts;
+        public BindingList<Part> newParts;
         public int index;
         public int id;
         public string name;
@@ -26,7 +29,7 @@ namespace C968_PA_MPlatt
         {
             InitializeComponent();
             dgPartsForProds.DataSource = Inventory.AllParts;
-            this.dgAssocParts.DataSource = Product.AssociatedParts;
+            dgAssocParts.DataSource = currentProd.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
         }
@@ -49,23 +52,42 @@ namespace C968_PA_MPlatt
             textBox_modMin.Text = currentProd.Min.ToString();
             textBox_modMax.Text = currentProd.Max.ToString();
 
+            this.associatedParts = currentProd.AssociatedParts;
+            newParts = new BindingList<Part>();
+
             dgPartsForProds.DataSource = Inventory.AllParts;
-            this.dgAssocParts.DataSource = Product.AssociatedParts;
+            dgAssocParts.DataSource = currentProd.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
         }
 
         private void btn_prodCancel_Click(object sender, EventArgs e)
         {
+            int count = newParts.Count - 1;
+            for(int i = currentProd.AssociatedParts.Count - 1; i >= 0; i--)
+            {
+                if(count >= 0)
+                {
+                    if (currentProd.AssociatedParts[i] == newParts[count])
+                    {
+                        Console.WriteLine(currentProd.AssociatedParts[i].Name);
+                        Console.WriteLine(newParts[count].Name);
+                        //Product.removeAssociatedPart(i);
+                    }
+                    count -= 1;
+                }
+            }
             this.Close();
         }
 
         private void btn_prodAdd_Click(object sender, EventArgs e)
         {
-            if (dgPartsForProds.CurrentRow.Selected)
+            if (dgPartsForProds.CurrentRow.Selected | currentPart != null)
             {
-                Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
-                Product.addAssociatedPart(part);
+                //Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
+                //Product.addAssociatedPart(currentPart);
+                newParts.Add(currentPart);
+                currentProd.addAssociatedPart(currentPart);
             }
             else
             {
@@ -75,7 +97,7 @@ namespace C968_PA_MPlatt
 
         private void btn_prodDelete_Click(object sender, EventArgs e)
         {
-            if (Product.AssociatedParts.Count > 0)
+            if (currentProd.AssociatedParts.Count > 0)
             {
                 if (dgAssocParts.CurrentRow.Selected)
                 {
@@ -170,14 +192,65 @@ namespace C968_PA_MPlatt
             if (name != "" && price != 0 && qty != 0 && max != 0)
             {
                 Inventory.Products.RemoveAt(index);
-                Inventory.addProduct(new Product(id, name, price, qty, min, max));
+
+                currentProd = new Product(id, name, price, qty, min, max, currentProd.AssociatedParts);
+                Inventory.addProduct(currentProd);
+
+                
+       /*         currentProd.AssociatedParts = associatedParts;
+                Inventory.addProduct(currentProd);*/
                 this.Close();
             }
             else
             {
-                Console.WriteLine("Not working");
                 return;
             }
+        }
+
+        private void dgParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (dgPartsForProds.CurrentRow != null)
+            {
+                this.currentPart = dgPartsForProds.CurrentRow.DataBoundItem as Part;
+            }
+        }
+
+        private void filterSearchParts(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btn_searchPart_Click(object sender, EventArgs e)
+        {
+            string input = searchInputParts.Text;
+
+            if (Inventory.AllParts != null)
+            {
+                foreach (DataGridViewRow row in dgPartsForProds.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(input) | row.Cells[1].Value.ToString().ToLower().Contains(input.ToLower()))
+                    {
+                        row.Selected = true;
+                        int index = row.Index;
+                        Part part = Inventory.lookupPart(index);
+                        this.currentPart = part;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid entry.");
+            }
+        }
+
+        private void myBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgPartsForProds.ClearSelection();
         }
     }
 }

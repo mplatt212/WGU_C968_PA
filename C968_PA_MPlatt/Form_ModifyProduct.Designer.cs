@@ -67,6 +67,8 @@ namespace C968_PA_MPlatt
             this.dgPartsForProds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPartsForProds.Size = new System.Drawing.Size(470, 176);
             this.dgPartsForProds.TabIndex = 46;
+            this.dgPartsForProds.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgParts_CellContentClick);
+            this.dgPartsForProds.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // btn_prodAdd
             // 
@@ -126,6 +128,7 @@ namespace C968_PA_MPlatt
             this.searchInputParts.Name = "searchInputParts";
             this.searchInputParts.Size = new System.Drawing.Size(156, 24);
             this.searchInputParts.TabIndex = 40;
+            this.searchInputParts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterSearchParts);
             // 
             // btn_searchPart
             // 
@@ -135,6 +138,7 @@ namespace C968_PA_MPlatt
             this.btn_searchPart.TabIndex = 39;
             this.btn_searchPart.Text = "Search";
             this.btn_searchPart.UseVisualStyleBackColor = true;
+            this.btn_searchPart.Click += new System.EventHandler(this.btn_searchPart_Click);
             // 
             // textBox_modMax
             // 

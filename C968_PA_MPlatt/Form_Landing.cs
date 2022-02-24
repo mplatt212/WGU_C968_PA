@@ -14,6 +14,7 @@ namespace C968_PA_MPlatt
     public partial class formMain : System.Windows.Forms.Form
     {
         Part currentPart;
+        Product currentProduct;
        
         public formMain()
         {
@@ -64,11 +65,9 @@ namespace C968_PA_MPlatt
         private void dgParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            Console.WriteLine(index);
             if (dgParts.CurrentRow != null)
             {
                 this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
-                Console.WriteLine(currentPart.Name);
             }
         }
 
@@ -88,19 +87,6 @@ namespace C968_PA_MPlatt
                 //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 Inventory.deletePart(currentPart);
             }
-
-/*            string message = "Are you sure you want to delete this part?";
-            string title = "Delete Part";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult alert = MessageBox.Show(message, title, buttons);
-            if (alert == DialogResult.Yes)
-            {
-                Part currentPart = dgParts.CurrentRow.DataBoundItem as Part;
-                Inventory.AllParts.Remove(currentPart);
-            } else
-            {
-                return;
-            }*/
         }
 
         private void btn_deleteProd_Click(object sender, EventArgs e)
@@ -126,11 +112,11 @@ namespace C968_PA_MPlatt
 
         private void btn_modifyProd_Click(object sender, EventArgs e)
         {
-            if(dgProducts.CurrentRow.Selected) 
+            if(dgProducts.CurrentRow.Selected | currentProduct != null) 
             {
                 int index = dgProducts.CurrentRow.Index;
-                Product selectedProduct = dgProducts.CurrentRow.DataBoundItem as Product;
-                Form_ModifyProduct productForm = new Form_ModifyProduct(selectedProduct, index);
+                //Product selectedProduct = dgProducts.CurrentRow.DataBoundItem as Product;
+                Form_ModifyProduct productForm = new Form_ModifyProduct(this.currentProduct, index);
                 productForm.Show();
             } else
             {
@@ -164,6 +150,47 @@ namespace C968_PA_MPlatt
         private void filterSearchParts(object sender, KeyPressEventArgs e)
         {
             if(!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (dgProducts.CurrentRow != null)
+            {
+                this.currentProduct = dgProducts.CurrentRow.DataBoundItem as Product;
+            }
+        }
+
+        private void btn_searchProduct_Click(object sender, EventArgs e)
+        {
+            string input = searchInputProd.Text;
+
+            if (Inventory.Products != null)
+            {
+                foreach (DataGridViewRow row in dgProducts.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Equals(input) | row.Cells[1].Value.ToString().ToLower().Contains(input.ToLower()))
+                    {
+                        row.Selected = true;
+                        int index = row.Index;
+                        Product product = Inventory.lookupProduct(index);
+                        this.currentProduct = product;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid entry.");
+            }
+        }
+
+        private void filterSearchProd(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
