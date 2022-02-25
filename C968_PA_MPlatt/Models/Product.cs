@@ -49,10 +49,10 @@ namespace C968_PA_MPlatt.Models
             this.AssociatedParts.Add(part);
         }
 
-        public static bool removeAssociatedPart(int index)
+        public bool removeAssociatedPart(int index)
         {
             BindingList<Part> AssociatedParts = new BindingList<Part>();
-            AssociatedParts.RemoveAt(index);
+            this.AssociatedParts.RemoveAt(index);
             return true;
         }
 

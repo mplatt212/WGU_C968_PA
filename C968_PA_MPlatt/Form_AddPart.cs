@@ -21,6 +21,7 @@ namespace C968_PA_MPlatt
         public int min;
         public int machineID;
         public string companyName;
+        public bool digit;
 
         public Form_AddPart()
         {
@@ -85,6 +86,26 @@ namespace C968_PA_MPlatt
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void textBoxMachIDCoName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(radioButton_Inhouse.Checked == true)
+            {
+                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+                digit = true;
+            } else
+            {
+                if (char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                digit = false;
             }
         }
 
@@ -185,13 +206,25 @@ namespace C968_PA_MPlatt
             }
             else if(radioButton_Inhouse.Checked == true)
             {
-                machineID = int.Parse(textBox_PartMachID_CoName.Text);
-                textBox_PartMachID_CoName.BackColor = Color.White;
+                if (digit)
+                {
+                    machineID = int.Parse(textBox_PartMachID_CoName.Text);
+                    textBox_PartMachID_CoName.BackColor = Color.White;
+                } else
+                {
+                    MessageBox.Show("Machine ID must be a number.");
+                }
             }
             else if (radioButton_Outsourced.Checked == true)
             {
-                companyName = textBox_PartMachID_CoName.Text;
-                textBox_PartMachID_CoName.BackColor = Color.White;
+                if(!digit)
+                {
+                    companyName = textBox_PartMachID_CoName.Text;
+                    textBox_PartMachID_CoName.BackColor = Color.White;
+                } else
+                {
+                    MessageBox.Show("Company name must be a string.");
+                }
             }
 
             //Add new part and close out the form

@@ -215,7 +215,7 @@ namespace C968_PA_MPlatt
             this.dgAssocParts.Name = "dgAssocParts";
             this.dgAssocParts.ReadOnly = true;
             this.dgAssocParts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgAssocParts.Size = new System.Drawing.Size(475, 176);
+            this.dgAssocParts.Size = new System.Drawing.Size(470, 176);
             this.dgAssocParts.TabIndex = 19;
             this.dgAssocParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 

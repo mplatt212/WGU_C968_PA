@@ -33,6 +33,19 @@ namespace C968_PA_MPlatt
             dgAssocParts.DataSource = newProduct.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
+
+            dgPartsForProds.Columns[0].HeaderText = "Part ID";
+            dgPartsForProds.Columns[3].HeaderText = "Inventory";
+            dgAssocParts.Columns[0].HeaderText = "Part ID";
+            dgAssocParts.Columns[3].HeaderText = "Inventory";
+            dgPartsForProds.Columns[0].Width = 62;
+            dgPartsForProds.Columns[3].Width = 55;
+            dgPartsForProds.Columns[4].Width = 55;
+            dgPartsForProds.Columns[5].Width = 55;
+            dgAssocParts.Columns[0].Width = 62;
+            dgAssocParts.Columns[3].Width = 55;
+            dgAssocParts.Columns[4].Width = 55;
+            dgAssocParts.Columns[5].Width = 55;
         }
 
         private void myBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -190,7 +203,7 @@ namespace C968_PA_MPlatt
                     /*Part part = dgAssocParts.CurrentRow.DataBoundItem as Part;
                     int id = part.PartID;*/
                     int index = dgAssocParts.CurrentRow.Index;
-                    Product.removeAssociatedPart(index);
+                    newProduct.removeAssociatedPart(index);
                 }
                 else
                 {

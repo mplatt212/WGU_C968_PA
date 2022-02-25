@@ -74,6 +74,7 @@ namespace C968_PA_MPlatt
             this.dgProducts.TabIndex = 1;
             this.dgProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProducts_CellContentClick);
             this.dgProducts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
+            this.dgProducts.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.orderList);
             // 
             // btn_addPart
             // 

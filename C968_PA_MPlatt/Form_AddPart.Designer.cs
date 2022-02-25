@@ -49,6 +49,7 @@ namespace C968_PA_MPlatt
             this.textBox_PartMax = new System.Windows.Forms.TextBox();
             this.btn_addPartSave = new System.Windows.Forms.Button();
             this.btn_addPartCancel = new System.Windows.Forms.Button();
+            this.textField_Req = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -108,9 +109,9 @@ namespace C968_PA_MPlatt
             this.label_PartID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartID.Location = new System.Drawing.Point(109, 117);
             this.label_PartID.Name = "label_PartID";
-            this.label_PartID.Size = new System.Drawing.Size(59, 20);
+            this.label_PartID.Size = new System.Drawing.Size(65, 20);
             this.label_PartID.TabIndex = 1;
-            this.label_PartID.Text = "Part ID";
+            this.label_PartID.Text = "Part ID*";
             this.label_PartID.Click += new System.EventHandler(this.label1_Click);
             // 
             // label_PartName
@@ -119,9 +120,9 @@ namespace C968_PA_MPlatt
             this.label_PartName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartName.Location = new System.Drawing.Point(109, 164);
             this.label_PartName.Name = "label_PartName";
-            this.label_PartName.Size = new System.Drawing.Size(51, 20);
+            this.label_PartName.Size = new System.Drawing.Size(57, 20);
             this.label_PartName.TabIndex = 1;
-            this.label_PartName.Text = "Name";
+            this.label_PartName.Text = "Name*";
             // 
             // textBox_PartName
             // 
@@ -139,9 +140,9 @@ namespace C968_PA_MPlatt
             this.label_Inventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_Inventory.Location = new System.Drawing.Point(109, 215);
             this.label_Inventory.Name = "label_Inventory";
-            this.label_Inventory.Size = new System.Drawing.Size(74, 20);
+            this.label_Inventory.Size = new System.Drawing.Size(80, 20);
             this.label_Inventory.TabIndex = 1;
-            this.label_Inventory.Text = "Inventory";
+            this.label_Inventory.Text = "Inventory*";
             // 
             // textBox_PartQty
             // 
@@ -159,9 +160,9 @@ namespace C968_PA_MPlatt
             this.label_PartPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartPrice.Location = new System.Drawing.Point(109, 268);
             this.label_PartPrice.Name = "label_PartPrice";
-            this.label_PartPrice.Size = new System.Drawing.Size(44, 20);
+            this.label_PartPrice.Size = new System.Drawing.Size(50, 20);
             this.label_PartPrice.TabIndex = 1;
-            this.label_PartPrice.Text = "Price";
+            this.label_PartPrice.Text = "Price*";
             // 
             // textBox_PartPrice
             // 
@@ -179,9 +180,9 @@ namespace C968_PA_MPlatt
             this.label_PartMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartMin.Location = new System.Drawing.Point(109, 322);
             this.label_PartMin.Name = "label_PartMin";
-            this.label_PartMin.Size = new System.Drawing.Size(34, 20);
+            this.label_PartMin.Size = new System.Drawing.Size(40, 20);
             this.label_PartMin.TabIndex = 1;
-            this.label_PartMin.Text = "Min";
+            this.label_PartMin.Text = "Min*";
             // 
             // textBox_PartMin
             // 
@@ -199,9 +200,9 @@ namespace C968_PA_MPlatt
             this.label_MachineID_CoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_MachineID_CoName.Location = new System.Drawing.Point(109, 385);
             this.label_MachineID_CoName.Name = "label_MachineID_CoName";
-            this.label_MachineID_CoName.Size = new System.Drawing.Size(90, 20);
+            this.label_MachineID_CoName.Size = new System.Drawing.Size(96, 20);
             this.label_MachineID_CoName.TabIndex = 1;
-            this.label_MachineID_CoName.Text = "Machine ID";
+            this.label_MachineID_CoName.Text = "Machine ID*";
             // 
             // textBox_PartMachID_CoName
             // 
@@ -211,6 +212,7 @@ namespace C968_PA_MPlatt
             this.textBox_PartMachID_CoName.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartMachID_CoName.TabIndex = 3;
             this.textBox_PartMachID_CoName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox_PartMachID_CoName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMachIDCoName_KeyPress);
             // 
             // label_PartMax
             // 
@@ -218,9 +220,9 @@ namespace C968_PA_MPlatt
             this.label_PartMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartMax.Location = new System.Drawing.Point(331, 321);
             this.label_PartMax.Name = "label_PartMax";
-            this.label_PartMax.Size = new System.Drawing.Size(38, 20);
+            this.label_PartMax.Size = new System.Drawing.Size(44, 20);
             this.label_PartMax.TabIndex = 1;
-            this.label_PartMax.Text = "Max";
+            this.label_PartMax.Text = "Max*";
             // 
             // textBox_PartMax
             // 
@@ -252,6 +254,16 @@ namespace C968_PA_MPlatt
             this.btn_addPartCancel.UseVisualStyleBackColor = true;
             this.btn_addPartCancel.Click += new System.EventHandler(this.closeForm);
             // 
+            // textField_Req
+            // 
+            this.textField_Req.AutoSize = true;
+            this.textField_Req.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textField_Req.Location = new System.Drawing.Point(134, 455);
+            this.textField_Req.Name = "textField_Req";
+            this.textField_Req.Size = new System.Drawing.Size(122, 20);
+            this.textField_Req.TabIndex = 1;
+            this.textField_Req.Text = "* Required Field";
+            // 
             // Form_AddPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +275,7 @@ namespace C968_PA_MPlatt
             this.Controls.Add(this.textBox_PartMax);
             this.Controls.Add(this.textBox_PartMin);
             this.Controls.Add(this.textBox_PartPrice);
+            this.Controls.Add(this.textField_Req);
             this.Controls.Add(this.label_MachineID_CoName);
             this.Controls.Add(this.textBox_PartQty);
             this.Controls.Add(this.label_PartMax);
@@ -306,5 +319,6 @@ namespace C968_PA_MPlatt
         private System.Windows.Forms.TextBox textBox_PartMax;
         private System.Windows.Forms.Button btn_addPartSave;
         private System.Windows.Forms.Button btn_addPartCancel;
+        private System.Windows.Forms.Label textField_Req;
     }
 }

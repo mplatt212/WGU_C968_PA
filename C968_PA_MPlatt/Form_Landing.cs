@@ -15,6 +15,7 @@ namespace C968_PA_MPlatt
     {
         Part currentPart;
         Product currentProduct;
+        int index;
        
         public formMain()
         {
@@ -23,6 +24,18 @@ namespace C968_PA_MPlatt
             dgParts.DataSource = Inventory.DefaultParts();
             dgParts.AllowUserToAddRows = false;
             dgProducts.AllowUserToAddRows = false;
+            dgParts.Columns[0].HeaderText = "Part ID";
+            dgParts.Columns[3].HeaderText = "Inventory";
+            dgProducts.Columns[0].HeaderText = "Part ID";
+            dgProducts.Columns[3].HeaderText = "Inventory";
+            dgParts.Columns[0].Width = 82;
+            dgParts.Columns[3].Width = 75;
+            dgParts.Columns[4].Width = 75;
+            dgParts.Columns[5].Width = 75;
+            dgProducts.Columns[0].Width = 82;
+            dgProducts.Columns[3].Width = 75;
+            dgProducts.Columns[4].Width = 75;
+            dgProducts.Columns[5].Width = 75;
         }
         
         private void openAddPartForm_Click(object sender, EventArgs e)
@@ -35,14 +48,15 @@ namespace C968_PA_MPlatt
         {
             if (!dgParts.CurrentRow.Selected && currentPart == null)
             {
-                MessageBox.Show("No row currently selected.");
+                MessageBox.Show("Please select a part to modify.");
                 return;
             } else
             {
                 //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 if (currentPart != null)
                 {
-                    int index = dgParts.CurrentCell.RowIndex;
+                    //int index = dgParts.CurrentCell.RowIndex;
+                    int index = dgParts.CurrentRow.Index;
                     int id = currentPart.PartID;
                     string name = currentPart.Name;
                     int qty = currentPart.InStock;
@@ -64,7 +78,7 @@ namespace C968_PA_MPlatt
 
         private void dgParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            this.index = e.RowIndex;
             if (dgParts.CurrentRow != null)
             {
                 this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
@@ -81,7 +95,7 @@ namespace C968_PA_MPlatt
         {
             if(!dgParts.CurrentRow.Selected)
             {
-                MessageBox.Show("No row currently selected.");
+                MessageBox.Show("Please select a part to delete.");
             } else
             {
                 //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
@@ -93,7 +107,7 @@ namespace C968_PA_MPlatt
         {
             if (!dgProducts.CurrentRow.Selected)
             {
-                MessageBox.Show("No row currently selected.");
+                MessageBox.Show("Please select a product to delete.");
             }
             else
             {
@@ -135,7 +149,7 @@ namespace C968_PA_MPlatt
                     if (row.Cells[0].Value.ToString().Equals(input) | row.Cells[1].Value.ToString().ToLower().Contains(input.ToLower()))
                     {
                         row.Selected = true;
-                        int index = row.Index;
+                        this.index = row.Index;
                         Part part = Inventory.lookupPart(index);
                         this.currentPart = part;
                         break;
@@ -157,7 +171,7 @@ namespace C968_PA_MPlatt
 
         private void dgProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            this.index = e.RowIndex;
             if (dgProducts.CurrentRow != null)
             {
                 this.currentProduct = dgProducts.CurrentRow.DataBoundItem as Product;
@@ -194,6 +208,11 @@ namespace C968_PA_MPlatt
             {
                 e.Handled = true;
             }
+        }
+
+        private void orderList(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+  
         }
     }
 }

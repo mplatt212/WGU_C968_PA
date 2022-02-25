@@ -59,6 +59,19 @@ namespace C968_PA_MPlatt
             dgAssocParts.DataSource = currentProd.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
             dgAssocParts.AllowUserToAddRows = false;
+
+            dgPartsForProds.Columns[0].HeaderText = "Part ID";
+            dgPartsForProds.Columns[3].HeaderText = "Inventory";
+            dgAssocParts.Columns[0].HeaderText = "Part ID";
+            dgAssocParts.Columns[3].HeaderText = "Inventory";
+            dgPartsForProds.Columns[0].Width = 62;
+            dgPartsForProds.Columns[3].Width = 55;
+            dgPartsForProds.Columns[4].Width = 55;
+            dgPartsForProds.Columns[5].Width = 55;
+            dgAssocParts.Columns[0].Width = 62;
+            dgAssocParts.Columns[3].Width = 55;
+            dgAssocParts.Columns[4].Width = 55;
+            dgAssocParts.Columns[5].Width = 55;
         }
 
         private void btn_prodCancel_Click(object sender, EventArgs e)
@@ -72,7 +85,7 @@ namespace C968_PA_MPlatt
                     {
                         Console.WriteLine(currentProd.AssociatedParts[i].Name);
                         Console.WriteLine(newParts[count].Name);
-                        //Product.removeAssociatedPart(i);
+                        currentProd.removeAssociatedPart(i);
                     }
                     count -= 1;
                 }
@@ -104,7 +117,7 @@ namespace C968_PA_MPlatt
                     /*Part part = dgAssocParts.CurrentRow.DataBoundItem as Part;
                     int id = part.PartID;*/
                     int index = dgAssocParts.CurrentRow.Index;
-                    Product.removeAssociatedPart(index);
+                    currentProd.removeAssociatedPart(index);
                 }
                 else
                 {
@@ -191,12 +204,10 @@ namespace C968_PA_MPlatt
             //Add new part and close out the form
             if (name != "" && price != 0 && qty != 0 && max != 0)
             {
-                Inventory.Products.RemoveAt(index);
-
+                Inventory.Products.Remove(currentProd);
                 currentProd = new Product(id, name, price, qty, min, max, currentProd.AssociatedParts);
                 Inventory.addProduct(currentProd);
-
-                
+         
        /*         currentProd.AssociatedParts = associatedParts;
                 Inventory.addProduct(currentProd);*/
                 this.Close();

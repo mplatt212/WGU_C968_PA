@@ -49,6 +49,7 @@ namespace C968_PA_MPlatt
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_modifyPartCancel = new System.Windows.Forms.Button();
             this.btn_modifyPartSave = new System.Windows.Forms.Button();
+            this.textField_Req = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_modMachID_CoName
@@ -92,9 +93,9 @@ namespace C968_PA_MPlatt
             this.label_MachineID_CoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_MachineID_CoName.Location = new System.Drawing.Point(93, 379);
             this.label_MachineID_CoName.Name = "label_MachineID_CoName";
-            this.label_MachineID_CoName.Size = new System.Drawing.Size(90, 20);
+            this.label_MachineID_CoName.Size = new System.Drawing.Size(96, 20);
             this.label_MachineID_CoName.TabIndex = 7;
-            this.label_MachineID_CoName.Text = "Machine ID";
+            this.label_MachineID_CoName.Text = "Machine ID*";
             // 
             // textBox_modQty
             // 
@@ -111,9 +112,9 @@ namespace C968_PA_MPlatt
             this.label_PartMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartMax.Location = new System.Drawing.Point(315, 316);
             this.label_PartMax.Name = "label_PartMax";
-            this.label_PartMax.Size = new System.Drawing.Size(38, 20);
+            this.label_PartMax.Size = new System.Drawing.Size(44, 20);
             this.label_PartMax.TabIndex = 8;
-            this.label_PartMax.Text = "Max";
+            this.label_PartMax.Text = "Max*";
             // 
             // label_PartMin
             // 
@@ -121,9 +122,9 @@ namespace C968_PA_MPlatt
             this.label_PartMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartMin.Location = new System.Drawing.Point(93, 316);
             this.label_PartMin.Name = "label_PartMin";
-            this.label_PartMin.Size = new System.Drawing.Size(34, 20);
+            this.label_PartMin.Size = new System.Drawing.Size(40, 20);
             this.label_PartMin.TabIndex = 9;
-            this.label_PartMin.Text = "Min";
+            this.label_PartMin.Text = "Min*";
             // 
             // textBox_modName
             // 
@@ -140,9 +141,9 @@ namespace C968_PA_MPlatt
             this.label_PartPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartPrice.Location = new System.Drawing.Point(93, 262);
             this.label_PartPrice.Name = "label_PartPrice";
-            this.label_PartPrice.Size = new System.Drawing.Size(44, 20);
+            this.label_PartPrice.Size = new System.Drawing.Size(50, 20);
             this.label_PartPrice.TabIndex = 11;
-            this.label_PartPrice.Text = "Price";
+            this.label_PartPrice.Text = "Price*";
             // 
             // textBox_modPartID
             // 
@@ -159,9 +160,9 @@ namespace C968_PA_MPlatt
             this.label_Inventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_Inventory.Location = new System.Drawing.Point(93, 209);
             this.label_Inventory.Name = "label_Inventory";
-            this.label_Inventory.Size = new System.Drawing.Size(74, 20);
+            this.label_Inventory.Size = new System.Drawing.Size(80, 20);
             this.label_Inventory.TabIndex = 12;
-            this.label_Inventory.Text = "Inventory";
+            this.label_Inventory.Text = "Inventory*";
             // 
             // radioButton_Outsourced
             // 
@@ -181,9 +182,9 @@ namespace C968_PA_MPlatt
             this.label_PartName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartName.Location = new System.Drawing.Point(93, 158);
             this.label_PartName.Name = "label_PartName";
-            this.label_PartName.Size = new System.Drawing.Size(51, 20);
+            this.label_PartName.Size = new System.Drawing.Size(57, 20);
             this.label_PartName.TabIndex = 6;
-            this.label_PartName.Text = "Name";
+            this.label_PartName.Text = "Name*";
             // 
             // radioButton_Inhouse
             // 
@@ -203,9 +204,9 @@ namespace C968_PA_MPlatt
             this.label_PartID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label_PartID.Location = new System.Drawing.Point(93, 111);
             this.label_PartID.Name = "label_PartID";
-            this.label_PartID.Size = new System.Drawing.Size(59, 20);
+            this.label_PartID.Size = new System.Drawing.Size(65, 20);
             this.label_PartID.TabIndex = 5;
-            this.label_PartID.Text = "Part ID";
+            this.label_PartID.Text = "Part ID*";
             // 
             // label_ModifyPart
             // 
@@ -244,11 +245,22 @@ namespace C968_PA_MPlatt
             this.btn_modifyPartSave.UseVisualStyleBackColor = true;
             this.btn_modifyPartSave.Click += new System.EventHandler(this.btn_modifyPartSave_Click);
             // 
+            // textField_Req
+            // 
+            this.textField_Req.AutoSize = true;
+            this.textField_Req.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textField_Req.Location = new System.Drawing.Point(160, 457);
+            this.textField_Req.Name = "textField_Req";
+            this.textField_Req.Size = new System.Drawing.Size(122, 20);
+            this.textField_Req.TabIndex = 24;
+            this.textField_Req.Text = "* Required Field";
+            // 
             // Form_ModifyPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.textField_Req);
             this.Controls.Add(this.btn_modifyPartCancel);
             this.Controls.Add(this.btn_modifyPartSave);
             this.Controls.Add(this.textBox_modMachID_CoName);
@@ -298,5 +310,6 @@ namespace C968_PA_MPlatt
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btn_modifyPartCancel;
         private System.Windows.Forms.Button btn_modifyPartSave;
+        private System.Windows.Forms.Label textField_Req;
     }
 }
