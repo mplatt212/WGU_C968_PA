@@ -17,29 +17,29 @@ namespace C968_PA_MPlatt.Models
         public static BindingList<Product> DefaultProducts()
         {
             BindingList<Part> testPartsLaptop = new BindingList<Part>();
-            testPartsLaptop.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            testPartsLaptop.Add(new Inhouse(1, "Motherboard", 399, 4, 1, 7, 22));
             testPartsLaptop.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
 
             BindingList<Part> testPartsWebBook = new BindingList<Part>();
-            testPartsWebBook.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            testPartsWebBook.Add(new Inhouse(1, "Motherboard", 399, 4, 1, 7, 22));
             testPartsWebBook.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
-            testPartsWebBook.Add(new Outsourced(2, "CPU", 899, 3, 0, 12, "Intel"));
+            testPartsWebBook.Add(new Outsourced(2, "CPU", 899, 3, 1, 12, "Intel"));
 
             BindingList<Part> testPartsPC = new BindingList<Part>();
-            testPartsPC.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
+            testPartsPC.Add(new Inhouse(1, "Motherboard", 399, 4, 1, 7, 22));
 
-            Products.Add(new Product(1, "Laptop", 599.99, 3, 0, 5, testPartsLaptop));
-            Products.Add(new Product(2, "Web Book", 299.99, 5, 0, 10, testPartsWebBook));
-            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 0, 5, testPartsPC));
+            Products.Add(new Product(1, "Laptop", 599.99, 3, 1, 5, testPartsLaptop));
+            Products.Add(new Product(2, "Web Book", 299.99, 5, 1, 10, testPartsWebBook));
+            Products.Add(new Product(3, "Gaming PC", 1299.99, 2, 1, 5, testPartsPC));
 
             return Products;
         }
 
         public static BindingList<Part> DefaultParts()
         {
-            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 0, 7, 22));
-            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 0, 12, "Intel"));
-            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 0, 10, 44));
+            AllParts.Add(new Inhouse(1, "Motherboard", 399, 4, 1, 7, 22));
+            AllParts.Add(new Outsourced(2, "CPU", 899, 3, 1, 12, "Intel"));
+            AllParts.Add(new Inhouse(3, "PSU", 499, 7, 1, 10, 44));
             return AllParts;
         }
 

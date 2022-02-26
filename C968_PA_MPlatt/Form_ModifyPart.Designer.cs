@@ -59,6 +59,7 @@ namespace C968_PA_MPlatt
             this.textBox_modMachID_CoName.Name = "textBox_modMachID_CoName";
             this.textBox_modMachID_CoName.Size = new System.Drawing.Size(159, 20);
             this.textBox_modMachID_CoName.TabIndex = 21;
+            this.textBox_modMachID_CoName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMachIDCoName_KeyPress);
             // 
             // textBox_modMax
             // 
@@ -147,6 +148,7 @@ namespace C968_PA_MPlatt
             // 
             // textBox_modPartID
             // 
+            this.textBox_modPartID.Enabled = false;
             this.textBox_modPartID.Location = new System.Drawing.Point(218, 110);
             this.textBox_modPartID.MaxLength = 3;
             this.textBox_modPartID.Name = "textBox_modPartID";
@@ -175,6 +177,7 @@ namespace C968_PA_MPlatt
             this.radioButton_Outsourced.TabStop = true;
             this.radioButton_Outsourced.Text = "Outsourced";
             this.radioButton_Outsourced.UseVisualStyleBackColor = true;
+            this.radioButton_Outsourced.Click += new System.EventHandler(this.MachineID_CoName_Change);
             // 
             // label_PartName
             // 
@@ -197,6 +200,7 @@ namespace C968_PA_MPlatt
             this.radioButton_Inhouse.TabStop = true;
             this.radioButton_Inhouse.Text = "In-House";
             this.radioButton_Inhouse.UseVisualStyleBackColor = true;
+            this.radioButton_Inhouse.Click += new System.EventHandler(this.MachineID_CoName_Change);
             // 
             // label_PartID
             // 

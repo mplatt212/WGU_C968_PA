@@ -27,17 +27,20 @@ namespace C968_PA_MPlatt
         {
             InitializeComponent();
             radioButton_Inhouse.Checked = true;
+            id = Inventory.Products.Count + 1;
+            textBox_PartID.Text = id.ToString();
         }
 
         private void MachineID_CoName_Change(object sender, EventArgs e)
         {
+            textBox_PartMachID_CoName.Text = "";
             if (radioButton_Inhouse.Checked == true)
             {
-                label_MachineID_CoName.Text = "Machine ID";
+                label_MachineID_CoName.Text = "Machine ID*";
             }
             else
             {
-                label_MachineID_CoName.Text = "Company Name";
+                label_MachineID_CoName.Text = "Company Name*";
             }
         }
 
@@ -111,23 +114,13 @@ namespace C968_PA_MPlatt
 
         public void savePart(object sender, EventArgs e)
         {
-            //Error handling for PartID
-            if (textBox_PartID.Text == "")
-            {
-                textBox_PartID.Invalidate();
-                MessageBox.Show("Part ID is a required field.");
-                textBox_PartID.BackColor = Color.Red;
-            } else
-            {
-                id = int.Parse(textBox_PartID.Text);
-                textBox_PartID.BackColor = Color.White;
-            }
             //Error handling for PartName
             if (textBox_PartName.Text == "")
             {
                 textBox_PartName.Invalidate();
                 MessageBox.Show("Name is a required field.");
                 textBox_PartName.BackColor = Color.Red;
+                name = "";
             }
             else
             {
@@ -140,6 +133,7 @@ namespace C968_PA_MPlatt
                 textBox_PartQty.Invalidate();
                 MessageBox.Show("Inventory is a required field.");
                 textBox_PartQty.BackColor = Color.Red;
+                qty = -1;
             }
             else
             {
@@ -152,6 +146,7 @@ namespace C968_PA_MPlatt
                 textBox_PartPrice.Invalidate();
                 MessageBox.Show("Price is a required field.");
                 textBox_PartPrice.BackColor = Color.Red;
+                price = -1;
             }
             else
             {
@@ -164,6 +159,7 @@ namespace C968_PA_MPlatt
                 textBox_PartMin.Invalidate();
                 MessageBox.Show("Minimum is a required field.");
                 textBox_PartMin.BackColor = Color.Red;
+                min = -1;
             }
             else if(int.Parse(textBox_PartMin.Text) >= qty)
             {
@@ -180,6 +176,7 @@ namespace C968_PA_MPlatt
                 textBox_PartMax.Invalidate();
                 MessageBox.Show("Maximum is a required field.");
                 textBox_PartMax.BackColor = Color.Red;
+                max = -1;
             }
             else if (int.Parse(textBox_PartMax.Text) <= qty)
             {
@@ -197,6 +194,7 @@ namespace C968_PA_MPlatt
                 textBox_PartMachID_CoName.Invalidate();
                 MessageBox.Show("MachineID is a required field.");
                 textBox_PartMachID_CoName.BackColor = Color.Red;
+                machineID = -1;
             }
             else if(radioButton_Outsourced.Checked == true && textBox_PartMachID_CoName.Text == "")
             {
@@ -228,17 +226,29 @@ namespace C968_PA_MPlatt
             }
 
             //Add new part and close out the form
-            if (radioButton_Inhouse.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && machineID != 0)
+            if (radioButton_Inhouse.Checked == true && id > 0 && name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0 && machineID >= 0)
             {
-                //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
-                Inventory.addPart(new Inhouse(id, name, price, qty, min, max, machineID));
-                this.Close();
+                if(machineID is int)
+                {
+                    //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
+                    Inventory.addPart(new Inhouse(id, name, price, qty, min, max, machineID));
+                    this.Close();
+                } else
+                {
+                    return;
+                }
             }
-            else if (radioButton_Outsourced.Checked == true && id != 0 && name != "" && price != 0 && qty != 0 && min != 0 && max != 0 && companyName != "")
+            else if (radioButton_Outsourced.Checked == true && id > 0 && name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0 && companyName != "")
             {
-                //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
-                Inventory.addPart(new Outsourced(id, name, price, qty, min, max, companyName));
-                this.Close();
+                if(companyName is string)
+                {
+                    //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
+                    Inventory.addPart(new Outsourced(id, name, price, qty, min, max, companyName));
+                    this.Close();
+                } else
+                {
+                    return;
+                }
             }
         }
 

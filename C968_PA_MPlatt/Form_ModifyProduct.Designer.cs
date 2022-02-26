@@ -120,6 +120,7 @@ namespace C968_PA_MPlatt
             this.dgAssocParts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAssocParts.Size = new System.Drawing.Size(470, 176);
             this.dgAssocParts.TabIndex = 41;
+            this.dgAssocParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
             // 
             // searchInputParts
             // 

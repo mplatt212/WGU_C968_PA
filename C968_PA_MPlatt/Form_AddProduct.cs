@@ -104,6 +104,7 @@ namespace C968_PA_MPlatt
                 textBox_ProdName.Invalidate();
                 MessageBox.Show("Name is a required field.");
                 textBox_ProdName.BackColor = Color.Red;
+                name = "";
             }
             else
             {
@@ -116,6 +117,7 @@ namespace C968_PA_MPlatt
                 textBox_ProdQty.Invalidate();
                 MessageBox.Show("Inventory is a required field.");
                 textBox_ProdQty.BackColor = Color.Red;
+                qty = -1;
             }
             else
             {
@@ -128,6 +130,7 @@ namespace C968_PA_MPlatt
                 textBox_ProdPrice.Invalidate();
                 MessageBox.Show("Price is a required field.");
                 textBox_ProdPrice.BackColor = Color.Red;
+                price = -1;
             }
             else
             {
@@ -140,6 +143,7 @@ namespace C968_PA_MPlatt
                 textBox_ProdMin.Invalidate();
                 MessageBox.Show("Minimum is a required field.");
                 textBox_ProdMin.BackColor = Color.Red;
+                min = -1;
             }
             else if (int.Parse(textBox_ProdMin.Text) >= qty)
             {
@@ -156,6 +160,7 @@ namespace C968_PA_MPlatt
                 textBox_ProdMax.Invalidate();
                 MessageBox.Show("Maximum is a required field.");
                 textBox_ProdMax.BackColor = Color.Red;
+                max = -1;
             }
             else if (int.Parse(textBox_ProdMax.Text) <= qty)
             {
@@ -168,7 +173,7 @@ namespace C968_PA_MPlatt
             }
 
             //Add new part and close out the form
-            if (name != "" && price != 0 && qty != 0 && min != 0 && max != 0)
+            if (name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0)
             {
                 newProduct = new Product(id, name, price, qty, min, max, newProduct.AssociatedParts);
                 Inventory.addProduct(newProduct);
@@ -186,6 +191,7 @@ namespace C968_PA_MPlatt
             if (dgPartsForProds.CurrentRow.Selected | currentPart != null)
             {
                 //Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
+                newParts.Add(currentPart);
                 newProduct.addAssociatedPart(currentPart);
             }
             else

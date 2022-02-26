@@ -95,6 +95,7 @@ namespace C968_PA_MPlatt
             // 
             // textBox_PartID
             // 
+            this.textBox_PartID.Enabled = false;
             this.textBox_PartID.Location = new System.Drawing.Point(234, 113);
             this.textBox_PartID.MaxLength = 3;
             this.textBox_PartID.Name = "textBox_PartID";

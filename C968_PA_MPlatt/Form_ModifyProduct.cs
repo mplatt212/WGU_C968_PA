@@ -138,6 +138,7 @@ namespace C968_PA_MPlatt
                 textBox_modName.Invalidate();
                 MessageBox.Show("Name is a required field.");
                 textBox_modName.BackColor = Color.Red;
+                name = "";
             }
             else
             {
@@ -150,6 +151,7 @@ namespace C968_PA_MPlatt
                 textBox_modQty.Invalidate();
                 MessageBox.Show("Inventory is a required field.");
                 textBox_modQty.BackColor = Color.Red;
+                qty = -1;
             }
             else
             {
@@ -162,6 +164,7 @@ namespace C968_PA_MPlatt
                 textBox_modPrice.Invalidate();
                 MessageBox.Show("Price is a required field.");
                 textBox_modPrice.BackColor = Color.Red;
+                price = -1;
             }
             else
             {
@@ -174,6 +177,7 @@ namespace C968_PA_MPlatt
                 textBox_modMin.Invalidate();
                 MessageBox.Show("Minimum is a required field.");
                 textBox_modMin.BackColor = Color.Red;
+                min = -1;
             }
             else if (int.Parse(textBox_modMin.Text) >= qty)
             {
@@ -190,6 +194,7 @@ namespace C968_PA_MPlatt
                 textBox_modMax.Invalidate();
                 MessageBox.Show("Maximum is a required field.");
                 textBox_modMax.BackColor = Color.Red;
+                max = -1;
             }
             else if (int.Parse(textBox_modMax.Text) <= qty)
             {
@@ -202,8 +207,9 @@ namespace C968_PA_MPlatt
             }
 
             //Add new part and close out the form
-            if (name != "" && price != 0 && qty != 0 && max != 0)
+            if (name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0)
             {
+                Console.WriteLine(name);
                 Inventory.Products.Remove(currentProd);
                 currentProd = new Product(id, name, price, qty, min, max, currentProd.AssociatedParts);
                 Inventory.addProduct(currentProd);
@@ -262,6 +268,7 @@ namespace C968_PA_MPlatt
         private void myBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgPartsForProds.ClearSelection();
+            dgAssocParts.ClearSelection();
         }
     }
 }

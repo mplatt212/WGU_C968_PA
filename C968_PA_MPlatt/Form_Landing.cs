@@ -93,13 +93,14 @@ namespace C968_PA_MPlatt
 
         private void btn_deletePart_Click(object sender, EventArgs e)
         {
-            if(!dgParts.CurrentRow.Selected)
+            if(!dgParts.CurrentRow.Selected && currentPart == null)
             {
                 MessageBox.Show("Please select a part to delete.");
             } else
             {
                 //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 Inventory.deletePart(currentPart);
+                currentPart = null;
             }
         }
 
