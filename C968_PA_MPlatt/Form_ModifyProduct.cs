@@ -97,8 +97,6 @@ namespace C968_PA_MPlatt
         {
             if (dgPartsForProds.CurrentRow.Selected | currentPart != null)
             {
-                //Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
-                //Product.addAssociatedPart(currentPart);
                 newParts.Add(currentPart);
                 currentProd.addAssociatedPart(currentPart);
             }
@@ -114,8 +112,6 @@ namespace C968_PA_MPlatt
             {
                 if (dgAssocParts.CurrentRow.Selected)
                 {
-                    /*Part part = dgAssocParts.CurrentRow.DataBoundItem as Part;
-                    int id = part.PartID;*/
                     int index = dgAssocParts.CurrentRow.Index;
                     currentProd.removeAssociatedPart(index);
                 }
@@ -209,14 +205,16 @@ namespace C968_PA_MPlatt
             //Add new part and close out the form
             if (name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0)
             {
-                Console.WriteLine(name);
-                Inventory.Products.Remove(currentProd);
-                currentProd = new Product(id, name, price, qty, min, max, currentProd.AssociatedParts);
-                Inventory.addProduct(currentProd);
-         
-       /*         currentProd.AssociatedParts = associatedParts;
-                Inventory.addProduct(currentProd);*/
-                this.Close();
+                if (currentProd.AssociatedParts.Count < 1)
+                {
+                    MessageBox.Show("Must add at least one part.");
+                } else
+                {
+                    Inventory.Products.Remove(currentProd);
+                    currentProd = new Product(id, name, price, qty, min, max, currentProd.AssociatedParts);
+                    Inventory.addProduct(currentProd);
+                    this.Close();
+                }
             }
             else
             {
@@ -253,7 +251,8 @@ namespace C968_PA_MPlatt
                     {
                         row.Selected = true;
                         int index = row.Index;
-                        Part part = Inventory.lookupPart(index);
+                        //Part part = Inventory.lookupPart(index);
+                        Part part = Product.lookupAssociatedPart(index);
                         this.currentPart = part;
                         break;
                     }

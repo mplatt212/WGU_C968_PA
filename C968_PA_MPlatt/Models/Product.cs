@@ -45,7 +45,6 @@ namespace C968_PA_MPlatt.Models
         //Methods
         public void addAssociatedPart(Part part)
         {
-            //BindingList<Part> AssociatedParts = new BindingList<Part>();
             this.AssociatedParts.Add(part);
         }
 
@@ -56,15 +55,17 @@ namespace C968_PA_MPlatt.Models
             return true;
         }
 
-/*        public static Part lookupAssociatedPart(int ProductID)
-        {
-            return Part;
-        }*/
-
-        public static BindingList<Part> createNewList()
+        public static Part lookupAssociatedPart(int index)
         {
             BindingList<Part> AssociatedParts = new BindingList<Part>();
-            return AssociatedParts;
+            Part part = Inventory.AllParts.ElementAt(index);
+            return part;
         }
+
+        /*        public static BindingList<Part> createNewList()
+                {
+                    BindingList<Part> AssociatedParts = new BindingList<Part>();
+                    return AssociatedParts;
+                }*/
     }
 }

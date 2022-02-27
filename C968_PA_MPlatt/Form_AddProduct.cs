@@ -16,6 +16,7 @@ namespace C968_PA_MPlatt
         Part currentPart;
         Product newProduct;
         public BindingList<Part> AssociatedParts;
+        public BindingList<Part> newParts;
         public int id;
         public string name;
         public int qty;
@@ -29,6 +30,7 @@ namespace C968_PA_MPlatt
             newProduct = new Product();
 
             AssociatedParts = new BindingList<Part>();
+            newParts = new BindingList<Part>();
             dgPartsForProds.DataSource = Inventory.AllParts;
             dgAssocParts.DataSource = newProduct.AssociatedParts;
             dgPartsForProds.AllowUserToAddRows = false;
@@ -175,11 +177,16 @@ namespace C968_PA_MPlatt
             //Add new part and close out the form
             if (name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0)
             {
-                newProduct = new Product(id, name, price, qty, min, max, newProduct.AssociatedParts);
-                Inventory.addProduct(newProduct);
-              /*  Product newProduct = new Product(id, name, price, qty, min, max, AssociatedParts);
-                this.AssociatedParts = newProduct.AssociatedParts;*/
-                this.Close();
+                if (newProduct.AssociatedParts.Count < 1)
+                {
+                    MessageBox.Show("Must add at least one part.");
+                }
+                else
+                {
+                    newProduct = new Product(id, name, price, qty, min, max, newProduct.AssociatedParts);
+                    Inventory.addProduct(newProduct);
+                    this.Close();
+                }
             } else
             {
                 return;
@@ -190,7 +197,6 @@ namespace C968_PA_MPlatt
         {
             if (dgPartsForProds.CurrentRow.Selected | currentPart != null)
             {
-                //Part part = dgPartsForProds.CurrentRow.DataBoundItem as Part;
                 newParts.Add(currentPart);
                 newProduct.addAssociatedPart(currentPart);
             }
@@ -202,12 +208,10 @@ namespace C968_PA_MPlatt
 
         private void btn_prodDelete_Click(object sender, EventArgs e)
         {
-            if (AssociatedParts.Count > 0)
+            if (newProduct.AssociatedParts.Count > 0)
             {
                 if (dgAssocParts.CurrentRow.Selected)
                 {
-                    /*Part part = dgAssocParts.CurrentRow.DataBoundItem as Part;
-                    int id = part.PartID;*/
                     int index = dgAssocParts.CurrentRow.Index;
                     newProduct.removeAssociatedPart(index);
                 }
@@ -256,7 +260,8 @@ namespace C968_PA_MPlatt
                     {
                         row.Selected = true;
                         int index = row.Index;
-                        Part part = Inventory.lookupPart(index);
+                        //Part part = Inventory.lookupPart(index);
+                        Part part = Product.lookupAssociatedPart(index);
                         this.currentPart = part;
                         break;
                     }

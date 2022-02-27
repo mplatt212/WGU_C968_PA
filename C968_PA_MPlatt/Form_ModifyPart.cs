@@ -150,7 +150,6 @@ namespace C968_PA_MPlatt
 
         private void btn_modifyPartSave_Click(object sender, EventArgs e)
         {
-            //Inventory.AllParts.Remove(selectedPart);
             int index = Inventory.AllParts.IndexOf(selectedPart);
 
             //Error handling for PartID
@@ -284,7 +283,6 @@ namespace C968_PA_MPlatt
                 if (machineID is int)
                 {
                     Console.WriteLine(price);
-                    //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
                     Inventory.updatePart(index, new Inhouse(id, name, price, qty, min, max, machineID));
                     this.Close();
                 }
@@ -297,7 +295,6 @@ namespace C968_PA_MPlatt
             {
                 if (companyName is string)
                 {
-                    //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
                     Inventory.updatePart(index, new Outsourced(id, name, price, qty, min, max, companyName));
                     this.Close();
                 }

@@ -101,7 +101,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartID.Name = "textBox_PartID";
             this.textBox_PartID.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartID.TabIndex = 3;
-            this.textBox_PartID.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartID_KeyPress);
             // 
             // label_PartID
@@ -113,7 +112,6 @@ namespace C968_PA_MPlatt
             this.label_PartID.Size = new System.Drawing.Size(65, 20);
             this.label_PartID.TabIndex = 1;
             this.label_PartID.Text = "Part ID*";
-            this.label_PartID.Click += new System.EventHandler(this.label1_Click);
             // 
             // label_PartName
             // 
@@ -132,7 +130,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartName.Name = "textBox_PartName";
             this.textBox_PartName.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartName.TabIndex = 3;
-            this.textBox_PartName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartName_KeyPress);
             // 
             // label_Inventory
@@ -152,7 +149,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartQty.Name = "textBox_PartQty";
             this.textBox_PartQty.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartQty.TabIndex = 3;
-            this.textBox_PartQty.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartQty_KeyPress);
             // 
             // label_PartPrice
@@ -172,7 +168,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartPrice.Name = "textBox_PartPrice";
             this.textBox_PartPrice.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartPrice.TabIndex = 3;
-            this.textBox_PartPrice.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartPrice_KeyPress);
             // 
             // label_PartMin
@@ -192,7 +187,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartMin.Name = "textBox_PartMin";
             this.textBox_PartMin.Size = new System.Drawing.Size(65, 20);
             this.textBox_PartMin.TabIndex = 3;
-            this.textBox_PartMin.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMin_KeyPress);
             // 
             // label_MachineID_CoName
@@ -212,7 +206,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartMachID_CoName.Name = "textBox_PartMachID_CoName";
             this.textBox_PartMachID_CoName.Size = new System.Drawing.Size(159, 20);
             this.textBox_PartMachID_CoName.TabIndex = 3;
-            this.textBox_PartMachID_CoName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartMachID_CoName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMachIDCoName_KeyPress);
             // 
             // label_PartMax
@@ -232,7 +225,6 @@ namespace C968_PA_MPlatt
             this.textBox_PartMax.Name = "textBox_PartMax";
             this.textBox_PartMax.Size = new System.Drawing.Size(65, 20);
             this.textBox_PartMax.TabIndex = 3;
-            this.textBox_PartMax.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox_PartMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPartMax_KeyPress);
             // 
             // btn_addPartSave

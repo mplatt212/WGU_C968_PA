@@ -55,7 +55,6 @@ namespace C968_PA_MPlatt
                 //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 if (currentPart != null)
                 {
-                    //int index = dgParts.CurrentCell.RowIndex;
                     int index = dgParts.CurrentRow.Index;
                     int id = currentPart.PartID;
                     string name = currentPart.Name;
@@ -112,7 +111,6 @@ namespace C968_PA_MPlatt
             }
             else
             {
-                //Product currentProduct = dgProducts.CurrentRow.DataBoundItem as Product;
                 int index = dgProducts.CurrentRow.Index;
                 Inventory.removeProduct(index);
             }
@@ -130,9 +128,9 @@ namespace C968_PA_MPlatt
             if(dgProducts.CurrentRow.Selected | currentProduct != null) 
             {
                 int index = dgProducts.CurrentRow.Index;
-                //Product selectedProduct = dgProducts.CurrentRow.DataBoundItem as Product;
                 Form_ModifyProduct productForm = new Form_ModifyProduct(this.currentProduct, index);
                 productForm.Show();
+                this.currentProduct = null;
             } else
             {
                 MessageBox.Show("Please select a product to modify.");

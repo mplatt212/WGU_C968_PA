@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using C968_PA_MPlatt.Models;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using C968_PA_MPlatt.Models;
 
 namespace C968_PA_MPlatt
 {
@@ -230,7 +224,6 @@ namespace C968_PA_MPlatt
             {
                 if(machineID is int)
                 {
-                    //Inventory.AllParts.Add(new Inhouse(id, name, price, qty, min, max, machineID));
                     Inventory.addPart(new Inhouse(id, name, price, qty, min, max, machineID));
                     this.Close();
                 } else
@@ -242,7 +235,6 @@ namespace C968_PA_MPlatt
             {
                 if(companyName is string)
                 {
-                    //Inventory.AllParts.Add(new Outsourced(id, name, price, qty, min, max, companyName));
                     Inventory.addPart(new Outsourced(id, name, price, qty, min, max, companyName));
                     this.Close();
                 } else
@@ -255,16 +247,6 @@ namespace C968_PA_MPlatt
         private void closeForm(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-        
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
