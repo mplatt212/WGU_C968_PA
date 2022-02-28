@@ -251,7 +251,6 @@ namespace C968_PA_MPlatt
                     {
                         row.Selected = true;
                         int index = row.Index;
-                        //Part part = Inventory.lookupPart(index);
                         Part part = Product.lookupAssociatedPart(index);
                         this.currentPart = part;
                         break;

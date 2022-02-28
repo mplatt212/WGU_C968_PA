@@ -61,11 +61,5 @@ namespace C968_PA_MPlatt.Models
             Part part = Inventory.AllParts.ElementAt(index);
             return part;
         }
-
-        /*        public static BindingList<Part> createNewList()
-                {
-                    BindingList<Part> AssociatedParts = new BindingList<Part>();
-                    return AssociatedParts;
-                }*/
     }
 }

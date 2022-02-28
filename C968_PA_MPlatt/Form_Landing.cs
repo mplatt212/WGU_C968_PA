@@ -42,6 +42,8 @@ namespace C968_PA_MPlatt
         {
             Form_AddPart partForm = new Form_AddPart();
             partForm.Show();
+            dgParts.ClearSelection();
+            currentPart = null;
         }
 
         private void openModifyPartForm_Click(object sender, EventArgs e)
@@ -52,7 +54,6 @@ namespace C968_PA_MPlatt
                 return;
             } else
             {
-                //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 if (currentPart != null)
                 {
                     int index = dgParts.CurrentRow.Index;
@@ -65,6 +66,8 @@ namespace C968_PA_MPlatt
 
                     Form_ModifyPart partForm = new Form_ModifyPart(currentPart);
                     partForm.Show();
+                    dgParts.ClearSelection();
+                    currentPart = null;
                 }
                 
             }
@@ -97,7 +100,6 @@ namespace C968_PA_MPlatt
                 MessageBox.Show("Please select a part to delete.");
             } else
             {
-                //this.currentPart = dgParts.CurrentRow.DataBoundItem as Part;
                 Inventory.deletePart(currentPart);
                 currentPart = null;
             }
@@ -105,22 +107,29 @@ namespace C968_PA_MPlatt
 
         private void btn_deleteProd_Click(object sender, EventArgs e)
         {
-            if (!dgProducts.CurrentRow.Selected)
+            if(currentProduct.AssociatedParts.Count < 1)
             {
-                MessageBox.Show("Please select a product to delete.");
-            }
-            else
+                if (!dgProducts.CurrentRow.Selected)
+                {
+                    MessageBox.Show("Please select a product to delete.");
+                }
+                else
+                {
+                    int index = dgProducts.CurrentRow.Index;
+                    Inventory.removeProduct(index);
+                }
+            } else
             {
-                int index = dgProducts.CurrentRow.Index;
-                Inventory.removeProduct(index);
+                MessageBox.Show("Cannot delete product that includes associated parts.");
             }
-
         }
 
         private void btn_addProd_Click(object sender, EventArgs e)
         {
             Form_AddProduct productForm = new Form_AddProduct();
             productForm.Show();
+            dgProducts.ClearSelection();
+            currentProduct = null;
         }
 
         private void btn_modifyProd_Click(object sender, EventArgs e)
@@ -131,6 +140,8 @@ namespace C968_PA_MPlatt
                 Form_ModifyProduct productForm = new Form_ModifyProduct(this.currentProduct, index);
                 productForm.Show();
                 this.currentProduct = null;
+                dgProducts.ClearSelection();
+                currentProduct = null;
             } else
             {
                 MessageBox.Show("Please select a product to modify.");
