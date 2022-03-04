@@ -150,6 +150,8 @@ namespace C968_PA_MPlatt
             else if (int.Parse(textBox_ProdMin.Text) >= qty)
             {
                 MessageBox.Show("Minimum must be less than inventory.");
+                textBox_ProdMin.BackColor = Color.Red;
+                min = -1;
             }
             else
             {
@@ -167,6 +169,8 @@ namespace C968_PA_MPlatt
             else if (int.Parse(textBox_ProdMax.Text) <= qty)
             {
                 MessageBox.Show("Maximum must be greater than inventory.");
+                textBox_ProdMax.BackColor = Color.Red;
+                max = -1;
             }
             else
             {
@@ -177,16 +181,16 @@ namespace C968_PA_MPlatt
             //Add new part and close out the form
             if (name != "" && price >= 0 && qty >= 0 && min >= 0 && max >= 0)
             {
-                if (newProduct.AssociatedParts.Count < 1)
+/*                if (newProduct.AssociatedParts.Count < 1)
                 {
                     MessageBox.Show("Must add at least one part.");
                 }
                 else
-                {
+                {*/
                     newProduct = new Product(id, name, price, qty, min, max, newProduct.AssociatedParts);
                     Inventory.addProduct(newProduct);
                     this.Close();
-                }
+               // }
             } else
             {
                 return;

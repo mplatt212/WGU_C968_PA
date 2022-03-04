@@ -107,20 +107,20 @@ namespace C968_PA_MPlatt
 
         private void btn_deleteProd_Click(object sender, EventArgs e)
         {
-            if(currentProduct.AssociatedParts.Count < 1)
-            {
                 if (!dgProducts.CurrentRow.Selected)
                 {
                     MessageBox.Show("Please select a product to delete.");
                 }
                 else
                 {
+                    if(currentProduct.AssociatedParts.Count < 1)
+                    {
                     int index = dgProducts.CurrentRow.Index;
                     Inventory.removeProduct(index);
+                    } else
+                    {
+                    MessageBox.Show("Cannot delete product that includes associated parts.");
                 }
-            } else
-            {
-                MessageBox.Show("Cannot delete product that includes associated parts.");
             }
         }
 

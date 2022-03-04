@@ -158,6 +158,8 @@ namespace C968_PA_MPlatt
             else if(int.Parse(textBox_PartMin.Text) >= qty)
             {
                 MessageBox.Show("Minimum must be less than inventory.");
+                textBox_PartMin.BackColor = Color.Red;
+                min = -1;
             }
             else
             {
@@ -175,6 +177,8 @@ namespace C968_PA_MPlatt
             else if (int.Parse(textBox_PartMax.Text) <= qty)
             {
                 MessageBox.Show("Maximum must be greater than inventory.");
+                textBox_PartMax.BackColor = Color.Red;
+                max = -1;
             }
             else
             {
