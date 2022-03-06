@@ -112,8 +112,15 @@ namespace C968_PA_MPlatt
             {
                 if (dgAssocParts.CurrentRow.Selected)
                 {
-                    int index = dgAssocParts.CurrentRow.Index;
-                    currentProd.removeAssociatedPart(index);
+                    string message = "Are you sure you want to delete this product?";
+                    string title = "Delete Product";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult alert = MessageBox.Show(message, title, buttons);
+                    if (alert == DialogResult.Yes)
+                    {
+                        int index = dgAssocParts.CurrentRow.Index;
+                        currentProd.removeAssociatedPart(index);
+                    }
                 }
                 else
                 {
